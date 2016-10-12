@@ -7,6 +7,7 @@
 pod 'ReactiveCocoa', '~> 2.4.4'
 
 # UI
+pod 'YYKit', '~> 1.0.7'
 pod 'Masonry', '~> 0.6.1'
 pod 'FLAnimatedImage', '~> 1.0'
 

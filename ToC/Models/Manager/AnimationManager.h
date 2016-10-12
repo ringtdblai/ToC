@@ -10,4 +10,9 @@
 
 @interface AnimationManager : NSObject
 
+@property (nonatomic, strong, readonly) NSArray *cAnimations;
+@property (nonatomic, strong, readonly) NSArray *tAnimations;
+
++ (instancetype)sharedManager;
+
 @end

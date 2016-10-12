@@ -12,12 +12,19 @@
 #import <ReactiveCocoa.h>
 #import <Masonry.h>
 
+// UI
+#import "SquareAnimationCollectionViewCell.h"
+
+// Model
+#import "AnimationManager.h"
+
 @interface MainViewController ()
 <
     UICollectionViewDataSource,
     UICollectionViewDelegate
 >
 
+@property (nonatomic, strong) NSArray *animations;
 @property (nonatomic, weak) UICollectionView *collectionView;
 
 @end
@@ -29,6 +36,7 @@
     [super viewDidLoad];
     
     [self constructView];
+    [self bindData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,11 +62,13 @@
     
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero
+                                                         collectionViewLayout:layout];
     
     collectionView.backgroundColor = [UIColor clearColor];
-    [collectionView registerClass:[UICollectionViewCell class]
-       forCellWithReuseIdentifier:@"cell"];
+    
+    [collectionView registerClass:[SquareAnimationCollectionViewCell class]
+       forCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier];
     
     collectionView.dataSource = self;
     collectionView.delegate = self;
@@ -72,21 +82,47 @@
     self.collectionView = collectionView;
 }
 
+#pragma mark - Bind Data
+- (void)bindData
+{
+    RACSignal *cAnimations = [RACObserve([AnimationManager sharedManager], cAnimations)
+                              ignore:nil];
+
+    RACSignal *tAnimations = [RACObserve([AnimationManager sharedManager], tAnimations)
+                              ignore:nil];
+    
+    RAC(self, animations) =
+    [RACSignal combineLatest:@[cAnimations, tAnimations]
+                      reduce:^id(NSArray *cAnimations, NSArray *tAnimations)
+     {
+         NSMutableArray *array = [NSMutableArray array];
+         
+         [array addObjectsFromArray:cAnimations];
+         [array addObjectsFromArray:tAnimations];
+         
+         return array;
+     }];
+    
+    @weakify(self);
+    [[RACObserve(self, animations) ignore:nil] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.collectionView reloadData];
+    }];
+}
+
 #pragma mark - UICollectionView Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return [self.animations count];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell"
+    SquareAnimationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier
                                                                            forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor colorWithRed:(arc4random()%255)/255.0
-                                           green:(arc4random()%255)/255.0
-                                            blue:(arc4random()%255)/255.0
-                                           alpha:1.0];
+    Animation *animation = self.animations[indexPath.row];
+    [cell updateWithAnimation:animation];
     
     return cell;
 }
