@@ -13,7 +13,7 @@
 		0932FB141DAE07F600F05D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0932FB131DAE07F600F05D90 /* Assets.xcassets */; };
 		0932FB221DAE07F600F05D90 /* ToCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB211DAE07F600F05D90 /* ToCTests.m */; };
 		0932FB2D1DAE07F600F05D90 /* ToCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB2C1DAE07F600F05D90 /* ToCUITests.m */; };
-		0932FB411DAE310800F05D90 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB401DAE310800F05D90 /* MainViewController.m */; };
+		0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB401DAE310800F05D90 /* AnimationListViewController.m */; };
 		0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB431DAE364400F05D90 /* ExportViewController.m */; };
 		0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB481DAE39A400F05D90 /* AnimationManager.m */; };
 		0932FB521DAE5F3800F05D90 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FB511DAE5F3800F05D90 /* Animation.m */; };
@@ -145,6 +145,7 @@
 		0932FC571DAE720500F05D90 /* proT_7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FBD81DAE720400F05D90 /* proT_7.gif */; };
 		0932FC581DAE720500F05D90 /* proT_8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FBD91DAE720400F05D90 /* proT_8.gif */; };
 		0932FC591DAE720500F05D90 /* proT_9.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FBDA1DAE720400F05D90 /* proT_9.gif */; };
+		0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -179,8 +180,8 @@
 		0932FB281DAE07F600F05D90 /* ToCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0932FB2C1DAE07F600F05D90 /* ToCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToCUITests.m; sourceTree = "<group>"; };
 		0932FB2E1DAE07F600F05D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0932FB3F1DAE310800F05D90 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		0932FB401DAE310800F05D90 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0932FB3F1DAE310800F05D90 /* AnimationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationListViewController.h; sourceTree = "<group>"; };
+		0932FB401DAE310800F05D90 /* AnimationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationListViewController.m; sourceTree = "<group>"; };
 		0932FB421DAE364400F05D90 /* ExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportViewController.h; sourceTree = "<group>"; };
 		0932FB431DAE364400F05D90 /* ExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExportViewController.m; sourceTree = "<group>"; };
 		0932FB471DAE39A400F05D90 /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationManager.h; sourceTree = "<group>"; };
@@ -316,6 +317,8 @@
 		0932FBD81DAE720400F05D90 /* proT_7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = proT_7.gif; sourceTree = "<group>"; };
 		0932FBD91DAE720400F05D90 /* proT_8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = proT_8.gif; sourceTree = "<group>"; };
 		0932FBDA1DAE720400F05D90 /* proT_9.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = proT_9.gif; sourceTree = "<group>"; };
+		0932FC5D1DAEA6FB00F05D90 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,8 +427,10 @@
 		0932FB3E1DAE310800F05D90 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0932FB3F1DAE310800F05D90 /* MainViewController.h */,
-				0932FB401DAE310800F05D90 /* MainViewController.m */,
+				0932FC5D1DAEA6FB00F05D90 /* MainViewController.h */,
+				0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */,
+				0932FB3F1DAE310800F05D90 /* AnimationListViewController.h */,
+				0932FB401DAE310800F05D90 /* AnimationListViewController.m */,
 				0932FB421DAE364400F05D90 /* ExportViewController.h */,
 				0932FB431DAE364400F05D90 /* ExportViewController.m */,
 			);
@@ -933,7 +938,8 @@
 				0932FB091DAE07F600F05D90 /* AppDelegate.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
 				0932FB521DAE5F3800F05D90 /* Animation.m in Sources */,
-				0932FB411DAE310800F05D90 /* MainViewController.m in Sources */,
+				0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */,
+				0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */,
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,

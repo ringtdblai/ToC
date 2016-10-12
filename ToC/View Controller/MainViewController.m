@@ -2,131 +2,81 @@
 //  MainViewController.m
 //  ToC
 //
-//  Created by ringtdblai on 2016/10/12.
+//  Created by ringtdblai on 2016/10/13.
 //  Copyright © 2016年 Mobiusbobs. All rights reserved.
 //
 
 #import "MainViewController.h"
 
 // Third Party
-#import <ReactiveCocoa.h>
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
+#import <MaterialControls/MDTabBarViewController.h>
 
-// UI
-#import "SquareAnimationCollectionViewCell.h"
+#import "AnimationListViewController.h"
 
-// Model
-#import "AnimationManager.h"
 
 @interface MainViewController ()
 <
-    UICollectionViewDataSource,
-    UICollectionViewDelegate
+    MDTabBarViewControllerDelegate
 >
 
-@property (nonatomic, strong) NSArray *animations;
-@property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, weak) MDTabBarViewController *tabBarViewController;
 
 @end
 
 @implementation MainViewController
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self constructView];
-    [self bindData];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Setup UI
 
-#pragma mark- Setup UI
 - (void)constructView
 {
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self setupCollectionView];
+    [self setupTabBarViewController];
 }
 
-- (void)setupCollectionView
+- (void)setupTabBarViewController
 {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    CGFloat width = (CGRectGetWidth([UIScreen mainScreen].bounds) - 6) / 2;
-    layout.itemSize = CGSizeMake(width, width);
-    layout.minimumLineSpacing = 2.0;
-    layout.minimumInteritemSpacing = 2.0;
+    MDTabBarViewController *tabBarViewController = [[MDTabBarViewController alloc] initWithDelegate:self];
+    NSArray *items = @[NSLocalizedString(@"Both", nil),
+                       NSLocalizedString(@"Clinton", nil),
+                       NSLocalizedString(@"Trump", nil),
+                       ];
+    [tabBarViewController setItems:items];
     
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    tabBarViewController.tabBar.backgroundColor = [UIColor clearColor];
+
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero
-                                                         collectionViewLayout:layout];
+    [self addChildViewController:tabBarViewController];
+    [self.view addSubview:tabBarViewController.view];
+    [tabBarViewController didMoveToParentViewController:self];
     
-    collectionView.backgroundColor = [UIColor clearColor];
-    
-    [collectionView registerClass:[SquareAnimationCollectionViewCell class]
-       forCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier];
-    
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    
-    [self.view addSubview:collectionView];
-    
-    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+    [tabBarViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.view);
+        make.top.equalTo(self.view).with.offset(64);
     }];
     
-    self.collectionView = collectionView;
+    self.tabBarViewController = tabBarViewController;
 }
 
-#pragma mark - Bind Data
-- (void)bindData
+#pragma mark - MDTabBarViewController
+- (UIViewController *)tabBarViewController:(MDTabBarViewController *)viewController
+                     viewControllerAtIndex:(NSUInteger)index
 {
-    RACSignal *cAnimations = [RACObserve([AnimationManager sharedManager], cAnimations)
-                              ignore:nil];
-
-    RACSignal *tAnimations = [RACObserve([AnimationManager sharedManager], tAnimations)
-                              ignore:nil];
-    
-    RAC(self, animations) =
-    [RACSignal combineLatest:@[cAnimations, tAnimations]
-                      reduce:^id(NSArray *cAnimations, NSArray *tAnimations)
-     {
-         NSMutableArray *array = [NSMutableArray array];
-         
-         [array addObjectsFromArray:cAnimations];
-         [array addObjectsFromArray:tAnimations];
-         
-         return array;
-     }];
-    
-    @weakify(self);
-    [[RACObserve(self, animations) ignore:nil] subscribeNext:^(id x) {
-        @strongify(self);
-        [self.collectionView reloadData];
-    }];
+    AnimationListViewController *vc = [AnimationListViewController new];
+    vc.type = index;
+    return vc;
 }
-
-#pragma mark - UICollectionView Delegate
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return [self.animations count];
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    SquareAnimationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier
-                                                                           forIndexPath:indexPath];
-    
-    Animation *animation = self.animations[indexPath.row];
-    [cell updateWithAnimation:animation];
-    
-    return cell;
-}
-
-
 
 @end

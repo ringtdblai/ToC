@@ -10,6 +10,8 @@ pod 'ReactiveCocoa', '~> 2.4.4'
 pod 'YYKit', '~> 1.0.7'
 pod 'Masonry', '~> 0.6.1'
 pod 'FLAnimatedImage', '~> 1.0'
+pod 'MBProgressHUD', '~> 0.9'
+pod 'MaterialControls', :git => 'https://github.com/Mobiusbobs/Material-Controls-For-iOS', :branch => 'ios10'
 
 target 'ToC' do
 
