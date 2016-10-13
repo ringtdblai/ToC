@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AddFaceViewControllerDelegate <NSObject>
+@optional
+- (void)didSelectFace:(NSString *)name;
+@end
+
+
 @interface AddFaceViewController : UIViewController
+
+@property (nonatomic, weak) id<AddFaceViewControllerDelegate> delegate;
 
 @end

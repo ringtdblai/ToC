@@ -135,6 +135,11 @@
         [TGCameraNavigationController newWithCameraDelegate:self];
         
         [self presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        if ([self.delegate respondsToSelector:@selector(didSelectFace:)]) {
+            [self.delegate didSelectFace:self.photosArray[indexPath.row - 1]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     }
 }
 
