@@ -66,7 +66,7 @@
     
     [tabBarViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(64);
+        make.top.equalTo(self.mas_topLayoutGuide);
     }];
     
     self.tabBarViewController = tabBarViewController;

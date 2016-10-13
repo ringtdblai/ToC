@@ -18,6 +18,9 @@
 // Model
 #import "AnimationManager.h"
 
+// View Controller
+#import "AnimationEditViewController.h"
+
 @interface AnimationListViewController ()
 <
     UICollectionViewDataSource,
@@ -146,6 +149,15 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    Animation *animation = self.animations[indexPath.row];
 
+    AnimationEditViewController *vc = [AnimationEditViewController new];
+    vc.animation = animation;
+    [self.navigationController pushViewController:vc
+                                         animated:YES];
+    
+}
 
 @end

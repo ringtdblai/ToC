@@ -8,11 +8,15 @@
 
 #import "AddFaceViewController.h"
 #import <TGCameraViewController.h>
-#import <Masonry.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry/Masonry.h>
 
 // UI
 #import "AddFaceCollectionViewCell.h"
 #import "FaceCollectionViewCell.h"
+
+// Model
+#import "FaceManager.h"
 
 @interface AddFaceViewController ()
 <
@@ -34,6 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self constructViews];
+    [self bindData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -100,6 +105,19 @@
     [self reloadPhotoList];
 }
 
+#pragma mark - Binding
+- (void)bindData
+{
+    @weakify(self);
+    [RACObserve([FaceManager sharedManager], faces)
+     subscribeNext:^(NSArray *faces) {
+         @strongify(self);
+         self.photosArray = faces;
+         [self.collectionView reloadData];
+     }];
+}
+
+#pragma mark - UICollectionView Delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.photosArray count] + 1;
@@ -135,10 +153,13 @@
         [TGCameraNavigationController newWithCameraDelegate:self];
         
         [self presentViewController:navigationController animated:YES completion:nil];
+    } else {
+        NSString *name = self.photosArray[indexPath.row - 1];
+        [[FaceManager sharedManager] selectFaceWithName:name];
     }
 }
 
-
+#pragma mark - Button Action
 - (void)closePressed
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -171,46 +192,14 @@
 
 - (void)cameraDidTakePhoto:(UIImage *)image
 {
-    [self saveImage:image];
+    [[FaceManager sharedManager] addFaceWithImage:image];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)cameraDidSelectAlbumPhoto:(UIImage *)image
 {
-    [self saveImage:image];
+    [[FaceManager sharedManager] addFaceWithImage:image];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (void)saveImage:(UIImage *)image
-{
-    NSData *imageData = UIImagePNGRepresentation(image);
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *UUID = [[NSUUID UUID] UUIDString];
-    NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",UUID]];
-    
-    NSLog(@"pre writing to file");
-    if (![imageData writeToFile:imagePath atomically:NO])
-    {
-        NSLog(@"Failed to cache image data to disk");
-    }
-    else
-    {
-        NSLog(@"the cachedImagedPath is %@",imagePath);
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"photos"]) {
-            NSMutableArray *photosArray = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"photos"]];
-            [photosArray addObject:UUID];
-            [[NSUserDefaults standardUserDefaults] setObject:photosArray forKey:@"photos"];
-        } else {
-            NSMutableArray *photosArray = [[NSMutableArray alloc] init];
-            [photosArray addObject:UUID];
-            [[NSUserDefaults standardUserDefaults] setObject:photosArray forKey:@"photos"];
-        }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [self reloadPhotoList];
-    }
-}
-
 
 @end

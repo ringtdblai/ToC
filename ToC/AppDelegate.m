@@ -22,6 +22,7 @@
     MainViewController *rootVC = [[MainViewController alloc] init];
 
     UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    
     self.window = [[UIWindow alloc]init];
     
     self.window.frame = [UIScreen mainScreen].bounds;
