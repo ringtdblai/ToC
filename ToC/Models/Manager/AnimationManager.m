@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong, readwrite) NSArray *cAnimations;
 @property (nonatomic, strong, readwrite) NSArray *tAnimations;
+@property (nonatomic, strong, readwrite) NSArray *bothAnimations;
+
 @end
 
 @implementation AnimationManager
@@ -36,6 +38,7 @@
     if (self) {
         self.cAnimations = [self createCAnimations];
         self.tAnimations = [self createTAnimations];
+        self.bothAnimations = [self createBothAnimations];
     }
     
     return self;
@@ -88,4 +91,29 @@
     
     return animations;
 }
+
+- (NSArray *)createBothAnimations
+{
+    NSMutableArray *animations = [NSMutableArray array];
+    
+    BOOL hasMore = YES;
+    NSInteger index = 1;
+    
+    while (hasMore) {
+        NSString *fileName = [NSString stringWithFormat:@"Both_%ld",(long)index];
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName
+                                                 withExtension:@"gif"];
+        
+        if (fileURL) {
+            Animation *animation = [[Animation alloc] initWithImageURL:fileURL];
+            [animations addObject:animation];
+            index ++;
+        } else {
+            hasMore = NO;
+        }
+    }
+    
+    return animations;
+}
+
 @end

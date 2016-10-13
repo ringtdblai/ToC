@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong, readonly) NSArray *cAnimations;
 @property (nonatomic, strong, readonly) NSArray *tAnimations;
+@property (nonatomic, strong, readonly) NSArray *bothAnimations;
 
 + (instancetype)sharedManager;
 

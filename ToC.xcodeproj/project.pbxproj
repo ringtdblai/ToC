@@ -146,6 +146,11 @@
 		0932FC581DAE720500F05D90 /* proT_8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FBD91DAE720400F05D90 /* proT_8.gif */; };
 		0932FC591DAE720500F05D90 /* proT_9.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FBDA1DAE720400F05D90 /* proT_9.gif */; };
 		0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */; };
+		0932FC6D1DAF404600F05D90 /* Both_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC691DAF404600F05D90 /* Both_1.gif */; };
+		0932FC6E1DAF404600F05D90 /* Both_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6A1DAF404600F05D90 /* Both_2.gif */; };
+		0932FC6F1DAF404600F05D90 /* Both_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6B1DAF404600F05D90 /* Both_3.gif */; };
+		0932FC701DAF404600F05D90 /* Both_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6C1DAF404600F05D90 /* Both_4.gif */; };
+		0932FC721DAF43AA00F05D90 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC711DAF43AA00F05D90 /* Property List.plist */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +324,10 @@
 		0932FBDA1DAE720400F05D90 /* proT_9.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = proT_9.gif; sourceTree = "<group>"; };
 		0932FC5D1DAEA6FB00F05D90 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		0932FC691DAF404600F05D90 /* Both_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_1.gif; sourceTree = "<group>"; };
+		0932FC6A1DAF404600F05D90 /* Both_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_2.gif; sourceTree = "<group>"; };
+		0932FC6B1DAF404600F05D90 /* Both_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_3.gif; sourceTree = "<group>"; };
+		0932FC6C1DAF404600F05D90 /* Both_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_4.gif; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -459,6 +468,7 @@
 		0932FB591DAE720400F05D90 /* GIF */ = {
 			isa = PBXGroup;
 			children = (
+				0932FC601DAF3FDE00F05D90 /* Both */,
 				0932FB5A1DAE720400F05D90 /* proC */,
 				0932FB991DAE720400F05D90 /* proT */,
 			);
@@ -604,6 +614,17 @@
 				0932FBDA1DAE720400F05D90 /* proT_9.gif */,
 			);
 			path = proT;
+			sourceTree = "<group>";
+		};
+		0932FC601DAF3FDE00F05D90 /* Both */ = {
+			isa = PBXGroup;
+			children = (
+				0932FC691DAF404600F05D90 /* Both_1.gif */,
+				0932FC6A1DAF404600F05D90 /* Both_2.gif */,
+				0932FC6B1DAF404600F05D90 /* Both_3.gif */,
+				0932FC6C1DAF404600F05D90 /* Both_4.gif */,
+			);
+			path = Both;
 			sourceTree = "<group>";
 		};
 		418D943B479A674F5059489A /* Pods */ = {
@@ -765,6 +786,7 @@
 				0932FC4B1DAE720500F05D90 /* proT_55.gif in Resources */,
 				0932FBDF1DAE720500F05D90 /* proC_13.gif in Resources */,
 				0932FC221DAE720500F05D90 /* proT_18.gif in Resources */,
+				0932FC701DAF404600F05D90 /* Both_4.gif in Resources */,
 				0932FBDD1DAE720500F05D90 /* proC_11.gif in Resources */,
 				0932FC1B1DAE720500F05D90 /* proT_11.gif in Resources */,
 				0932FC4E1DAE720500F05D90 /* proT_58.gif in Resources */,
@@ -786,6 +808,7 @@
 				0932FBE21DAE720500F05D90 /* proC_16.gif in Resources */,
 				0932FC161DAE720500F05D90 /* proC_7.gif in Resources */,
 				0932FC2F1DAE720500F05D90 /* proT_3.gif in Resources */,
+				0932FC6D1DAF404600F05D90 /* Both_1.gif in Resources */,
 				0932FC2B1DAE720500F05D90 /* proT_26.gif in Resources */,
 				0932FC511DAE720500F05D90 /* proT_60.gif in Resources */,
 				0932FC301DAE720500F05D90 /* proT_30.gif in Resources */,
@@ -802,9 +825,11 @@
 				0932FBEA1DAE720500F05D90 /* proC_23.gif in Resources */,
 				0932FC311DAE720500F05D90 /* proT_31.gif in Resources */,
 				0932FC4A1DAE720500F05D90 /* proT_54.gif in Resources */,
+				0932FC6E1DAF404600F05D90 /* Both_2.gif in Resources */,
 				0932FC191DAE720500F05D90 /* proT_1.gif in Resources */,
 				0932FBEC1DAE720500F05D90 /* proC_25.gif in Resources */,
 				0932FC1F1DAE720500F05D90 /* proT_15.gif in Resources */,
+				0932FC6F1DAF404600F05D90 /* Both_3.gif in Resources */,
 				0932FBF51DAE720500F05D90 /* proC_33.gif in Resources */,
 				0932FC1E1DAE720500F05D90 /* proT_14.gif in Resources */,
 				0932FC2D1DAE720500F05D90 /* proT_28.gif in Resources */,

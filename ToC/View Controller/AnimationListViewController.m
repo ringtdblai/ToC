@@ -91,11 +91,20 @@
     RACSignal *tAnimations = [RACObserve([AnimationManager sharedManager], tAnimations)
                               ignore:nil];
     
+    RACSignal *bothAnimations = [RACObserve([AnimationManager sharedManager], bothAnimations)
+                              ignore:nil];
+    
     RACSignal *typeSignal = [RACObserve(self, type) ignore:nil];
     
     RAC(self, animations) =
-    [RACSignal combineLatest:@[cAnimations, tAnimations, typeSignal]
-                      reduce:^id(NSArray *cAnimations, NSArray *tAnimations, NSNumber *type)
+    [RACSignal combineLatest:@[cAnimations,
+                               tAnimations,
+                               bothAnimations,
+                               typeSignal]
+                      reduce:^id(NSArray *cAnimations,
+                                 NSArray *tAnimations,
+                                 NSArray *bothAnimations,
+                                 NSNumber *type)
      {
          NSMutableArray *array = [NSMutableArray array];
          
@@ -107,8 +116,7 @@
                  [array addObjectsFromArray:tAnimations];
                  break;
              default:
-                 [array addObjectsFromArray:cAnimations];
-                 [array addObjectsFromArray:tAnimations];
+                 [array addObjectsFromArray:bothAnimations];
                  break;
          }
          return array;
