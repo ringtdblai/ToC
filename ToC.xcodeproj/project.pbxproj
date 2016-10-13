@@ -150,8 +150,11 @@
 		0932FC6E1DAF404600F05D90 /* Both_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6A1DAF404600F05D90 /* Both_2.gif */; };
 		0932FC6F1DAF404600F05D90 /* Both_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6B1DAF404600F05D90 /* Both_3.gif */; };
 		0932FC701DAF404600F05D90 /* Both_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6C1DAF404600F05D90 /* Both_4.gif */; };
-		0932FC721DAF43AA00F05D90 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC711DAF43AA00F05D90 /* Property List.plist */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
+		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
+		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
+		F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */; };
+		F88800661DAF7A0200DDD8DB /* FaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800651DAF7A0200DDD8DB /* FaceCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +334,14 @@
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceViewController.h; sourceTree = "<group>"; };
+		F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceViewController.m; sourceTree = "<group>"; };
+		F888005D1DAF740E00DDD8DB /* AddFaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceCollectionViewCell.h; sourceTree = "<group>"; };
+		F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceCollectionViewCell.m; sourceTree = "<group>"; };
+		F88800611DAF78EC00DDD8DB /* WBMaskedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMaskedImageView.h; sourceTree = "<group>"; };
+		F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMaskedImageView.m; sourceTree = "<group>"; };
+		F88800641DAF7A0200DDD8DB /* FaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceCollectionViewCell.h; sourceTree = "<group>"; };
+		F88800651DAF7A0200DDD8DB /* FaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +395,7 @@
 		0932FB031DAE07F600F05D90 /* ToC */ = {
 			isa = PBXGroup;
 			children = (
+				F88800601DAF78E100DDD8DB /* Third Party */,
 				0932FB591DAE720400F05D90 /* GIF */,
 				0932FB451DAE36ED00F05D90 /* Models */,
 				0932FB3A1DAE18F000F05D90 /* Customize View */,
@@ -427,6 +439,7 @@
 		0932FB3A1DAE18F000F05D90 /* Customize View */ = {
 			isa = PBXGroup;
 			children = (
+				F888005C1DAF73F800DDD8DB /* Add Face */,
 				0932FB561DAE612200F05D90 /* SquareAnimationCollectionViewCell.h */,
 				0932FB571DAE612200F05D90 /* SquareAnimationCollectionViewCell.m */,
 			);
@@ -442,6 +455,8 @@
 				0932FB401DAE310800F05D90 /* AnimationListViewController.m */,
 				0932FB421DAE364400F05D90 /* ExportViewController.h */,
 				0932FB431DAE364400F05D90 /* ExportViewController.m */,
+				F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */,
+				F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -642,6 +657,26 @@
 				8362AA6F80E605D18FE529F2 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F888005C1DAF73F800DDD8DB /* Add Face */ = {
+			isa = PBXGroup;
+			children = (
+				F888005D1DAF740E00DDD8DB /* AddFaceCollectionViewCell.h */,
+				F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */,
+				F88800641DAF7A0200DDD8DB /* FaceCollectionViewCell.h */,
+				F88800651DAF7A0200DDD8DB /* FaceCollectionViewCell.m */,
+			);
+			name = "Add Face";
+			sourceTree = "<group>";
+		};
+		F88800601DAF78E100DDD8DB /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				F88800611DAF78EC00DDD8DB /* WBMaskedImageView.h */,
+				F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */,
+			);
+			name = "Third Party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -961,14 +996,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0932FB091DAE07F600F05D90 /* AppDelegate.m in Sources */,
+				F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */,
+				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
 				0932FB521DAE5F3800F05D90 /* Animation.m in Sources */,
 				0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */,
+				F88800661DAF7A0200DDD8DB /* FaceCollectionViewCell.m in Sources */,
 				0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */,
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
+				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
