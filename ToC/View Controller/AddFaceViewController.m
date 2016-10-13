@@ -156,6 +156,7 @@
     } else {
         NSString *name = self.photosArray[indexPath.row - 1];
         [[FaceManager sharedManager] selectFaceWithName:name];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

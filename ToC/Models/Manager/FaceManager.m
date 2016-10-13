@@ -46,6 +46,16 @@
 #pragma mark - Binding
 - (void)bindData
 {
+    RAC(self, selectedFace) = [[[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:@"selectedFace"]
+                                distinctUntilChanged]
+                               map:^id(NSString *name) {
+                                   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                                   NSString *documentsDirectory = [paths objectAtIndex:0];
+                                   NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",name]];
+                                   
+                                   return [UIImage imageWithContentsOfFile:imagePath];
+                               }];
+    
     RAC(self, faces) = [[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:@"photos"]
                         distinctUntilChanged];
     
@@ -78,7 +88,8 @@
     {
         NSLog(@"the cachedImagedPath is %@",imagePath);
         if ([[NSUserDefaults standardUserDefaults] objectForKey:@"photos"]) {
-            NSMutableArray *photosArray = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"photos"]];
+            NSArray *photos = [[NSUserDefaults standardUserDefaults] objectForKey:@"photos"];
+            NSMutableArray *photosArray = [[NSMutableArray alloc] initWithArray:photos];
             [photosArray addObject:UUID];
             [[NSUserDefaults standardUserDefaults] setObject:photosArray forKey:@"photos"];
         } else {
@@ -92,11 +103,7 @@
 
 - (void)selectFaceWithName:(NSString *)name;
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",name]];
-    
-    UIImage *customImage = [UIImage imageWithContentsOfFile:imagePath];
-    self.selectedFace = customImage;
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"selectedFace"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

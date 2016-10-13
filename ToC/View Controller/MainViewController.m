@@ -9,12 +9,19 @@
 #import "MainViewController.h"
 
 // Third Party
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
 #import <MaterialControls/MDTabBarViewController.h>
 
+// View Controller
 #import "AnimationListViewController.h"
 #import "AddFaceViewController.h"
 
+// UI
+#import "WBMaskedImageView.h"
+
+// Model
+#import "FaceManager.h"
 
 @interface MainViewController ()
 <
@@ -22,7 +29,7 @@
 >
 
 @property (nonatomic, weak) MDTabBarViewController *tabBarViewController;
-
+@property (nonatomic, weak) WBMaskedImageView *faceImageView;
 @end
 
 @implementation MainViewController
@@ -33,6 +40,8 @@
     [super viewDidLoad];
     
     [self constructView];
+    [self bindData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,15 +83,48 @@
 
 - (void)setupAddFaceButton
 {
-    UIButton *faceButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [faceButton setImage:[UIImage imageNamed:@"AddFace"] forState:UIControlStateNormal];
-    [faceButton addTarget:self action:@selector(showAddFaceVC) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:faceButton];
-    [faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    WBMaskedImageView *imageView = [WBMaskedImageView new];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@80);
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-30);
     }];
+    
+    self.faceImageView = imageView;
+    
+    UIButton *faceButton = [UIButton buttonWithType:UIButtonTypeCustom];;
+    [faceButton addTarget:self
+                   action:@selector(showAddFaceVC)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:faceButton];
+    
+    [faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(imageView);
+    }];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"currentFace"]) {
+        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentFace"];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",name]];
+        
+        UIImage *customImage = [UIImage imageWithContentsOfFile:imagePath];
+        self.faceImageView.originalImage = customImage;
+        self.faceImageView.maskImage = [UIImage imageNamed:@"catOutline"];
+    } else {
+        self.faceImageView.originalImage = [UIImage imageNamed:@"AddFace"];
+        self.faceImageView.maskImage = [UIImage imageNamed:@"catOutline"];
+    }
+}
+
+#pragma mark - Binding
+- (void)bindData
+{
+    RAC(self.faceImageView, originalImage) = RACObserve([FaceManager sharedManager], selectedFace);
+    RAC(self.faceImageView, maskImage) = RACObserve([FaceManager sharedManager], maskImage);
 }
 
 #pragma mark - MDTabBarViewController
