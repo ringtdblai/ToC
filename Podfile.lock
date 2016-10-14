@@ -7,7 +7,7 @@ PODS:
   - Bolts/Tasks (1.8.4)
   - FBSDKCoreKit (4.10.1):
     - Bolts (~> 1.5)
-  - FBSDKLoginKit (4.16.1):
+  - FBSDKLoginKit (4.10.1):
     - FBSDKCoreKit
   - FBSDKMessengerShareKit (1.3.2)
   - FBSDKShareKit (4.10.1):
@@ -30,7 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - FBSDKCoreKit (~> 4.10.1)
-  - FBSDKLoginKit (~> 4.2)
+  - FBSDKLoginKit (~> 4.10.0)
   - FBSDKMessengerShareKit (~> 1.3.2)
   - FBSDKShareKit (~> 4.10.1)
   - FLAnimatedImage (~> 1.0)
@@ -55,7 +55,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
-  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
+  FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
   FBSDKMessengerShareKit: 41c0b1a667d685c9433f993eb9611b3d5074e1cb
   FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31

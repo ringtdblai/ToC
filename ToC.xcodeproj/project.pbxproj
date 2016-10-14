@@ -150,6 +150,8 @@
 		0932FC6E1DAF404600F05D90 /* Both_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6A1DAF404600F05D90 /* Both_2.gif */; };
 		0932FC6F1DAF404600F05D90 /* Both_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6B1DAF404600F05D90 /* Both_3.gif */; };
 		0932FC701DAF404600F05D90 /* Both_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6C1DAF404600F05D90 /* Both_4.gif */; };
+		0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC741DAF47BE00F05D90 /* AnimationEditViewController.m */; };
+		0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC7A1DAF8E3600F05D90 /* FaceManager.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
@@ -162,6 +164,7 @@
 		F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800741DAFA37D00DDD8DB /* AlertView.m */; };
 		F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800771DAFA72000DDD8DB /* EmailViewController.m */; };
 		F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */; };
+		F888007F1DB09B2300DDD8DB /* ViewDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = F888007E1DB09B2300DDD8DB /* ViewDecorator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -338,6 +341,10 @@
 		0932FC6A1DAF404600F05D90 /* Both_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_2.gif; sourceTree = "<group>"; };
 		0932FC6B1DAF404600F05D90 /* Both_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_3.gif; sourceTree = "<group>"; };
 		0932FC6C1DAF404600F05D90 /* Both_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_4.gif; sourceTree = "<group>"; };
+		0932FC731DAF47BE00F05D90 /* AnimationEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEditViewController.h; sourceTree = "<group>"; };
+		0932FC741DAF47BE00F05D90 /* AnimationEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationEditViewController.m; sourceTree = "<group>"; };
+		0932FC791DAF8E3500F05D90 /* FaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceManager.h; sourceTree = "<group>"; };
+		0932FC7A1DAF8E3600F05D90 /* FaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceManager.m; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,6 +370,8 @@
 		F88800771DAFA72000DDD8DB /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		F888007A1DAFA88A00DDD8DB /* KeyboardNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardNotificationHelper.h; sourceTree = "<group>"; };
 		F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardNotificationHelper.m; sourceTree = "<group>"; };
+		F888007D1DB09B2300DDD8DB /* ViewDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDecorator.h; sourceTree = "<group>"; };
+		F888007E1DB09B2300DDD8DB /* ViewDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDecorator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,6 +486,8 @@
 				0932FC5E1DAEA6FB00F05D90 /* MainViewController.m */,
 				0932FB3F1DAE310800F05D90 /* AnimationListViewController.h */,
 				0932FB401DAE310800F05D90 /* AnimationListViewController.m */,
+				0932FC731DAF47BE00F05D90 /* AnimationEditViewController.h */,
+				0932FC741DAF47BE00F05D90 /* AnimationEditViewController.m */,
 				0932FB421DAE364400F05D90 /* ExportViewController.h */,
 				0932FB431DAE364400F05D90 /* ExportViewController.m */,
 				F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */,
@@ -504,6 +515,8 @@
 			children = (
 				0932FB471DAE39A400F05D90 /* AnimationManager.h */,
 				0932FB481DAE39A400F05D90 /* AnimationManager.m */,
+				0932FC791DAF8E3500F05D90 /* FaceManager.h */,
+				0932FC7A1DAF8E3600F05D90 /* FaceManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -710,6 +723,8 @@
 		F88800791DAFA85900DDD8DB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F888007D1DB09B2300DDD8DB /* ViewDecorator.h */,
+				F888007E1DB09B2300DDD8DB /* ViewDecorator.m */,
 				F888007A1DAFA88A00DDD8DB /* KeyboardNotificationHelper.h */,
 				F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */,
 				F88800731DAFA37D00DDD8DB /* AlertView.h */,
@@ -1044,6 +1059,7 @@
 				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
 				F88800691DAF98BE00DDD8DB /* LoginViewController.m in Sources */,
+				0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */,
 				0932FB521DAE5F3800F05D90 /* Animation.m in Sources */,
 				0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */,
 				F88800661DAF7A0200DDD8DB /* FaceCollectionViewCell.m in Sources */,
@@ -1054,10 +1070,12 @@
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,
 				F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */,
+				F888007F1DB09B2300DDD8DB /* ViewDecorator.m in Sources */,
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
 				F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */,
 				F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */,
 				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
+				0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

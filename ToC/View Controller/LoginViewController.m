@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "RACCommand+Extension.h"
+#import "EmailViewController.h"
 
 @interface LoginViewController ()
 
@@ -171,6 +172,8 @@
      displayErrorInAlertViewWithTitle:NSLocalizedString(@"Login_Fail", nil)];
     
     [self.fbLoginButton.rac_command subscribeAllNext:^{
+        [[NSUserDefaults standardUserDefaults] setObject:@"facebook" forKey:@"email"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
     
@@ -254,7 +257,8 @@
 
 - (void)goToEmailVC
 {
-
+    EmailViewController *vc = [EmailViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

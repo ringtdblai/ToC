@@ -9,18 +9,23 @@
 #import "MainViewController.h"
 
 // Third Party
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
 #import <MaterialControls/MDTabBarViewController.h>
 
+// View Controller
 #import "AnimationListViewController.h"
 #import "AddFaceViewController.h"
+
+// UI
 #import "WBMaskedImageView.h"
 
+// Model
+#import "FaceManager.h"
 
 @interface MainViewController ()
 <
-    MDTabBarViewControllerDelegate,
-    AddFaceViewControllerDelegate
+    MDTabBarViewControllerDelegate
 >
 
 @property (nonatomic, weak) MDTabBarViewController *tabBarViewController;
@@ -35,6 +40,7 @@
     [super viewDidLoad];
     
     [self constructView];
+    [self bindData];
     
 }
 
@@ -69,7 +75,7 @@
     
     [tabBarViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.equalTo(self.view);
-        make.top.equalTo(self.view).with.offset(64);
+        make.top.equalTo(self.mas_topLayoutGuide);
     }];
     
     self.tabBarViewController = tabBarViewController;
@@ -89,8 +95,12 @@
     self.faceImageView = imageView;
     
     UIButton *faceButton = [UIButton buttonWithType:UIButtonTypeCustom];;
-    [faceButton addTarget:self action:@selector(showAddFaceVC) forControlEvents:UIControlEventTouchUpInside];
+    [faceButton addTarget:self
+                   action:@selector(showAddFaceVC)
+         forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:faceButton];
+    
     [faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(imageView);
     }];
@@ -109,7 +119,13 @@
         self.faceImageView.originalImage = [UIImage imageNamed:@"AddFace"];
         self.faceImageView.maskImage = [UIImage imageNamed:@"catOutline"];
     }
+}
 
+#pragma mark - Binding
+- (void)bindData
+{
+    RAC(self.faceImageView, originalImage) = RACObserve([FaceManager sharedManager], selectedFace);
+    RAC(self.faceImageView, maskImage) = RACObserve([FaceManager sharedManager], maskImage);
 }
 
 #pragma mark - MDTabBarViewController
@@ -124,26 +140,9 @@
 - (void)showAddFaceVC
 {
     AddFaceViewController *vc = [AddFaceViewController new];
-    vc.delegate = self;
     [self presentViewController:vc animated:YES completion:^{
         
     }];
-}
-
-- (void)didSelectFace:(NSString *)name
-{
-    NSLog(@"select face:%@",name);
-    
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"currentFace"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",name]];
-    
-    UIImage *customImage = [UIImage imageWithContentsOfFile:imagePath];
-    self.faceImageView.originalImage = customImage;
-    self.faceImageView.maskImage = [UIImage imageNamed:@"catOutline"];
 }
 
 @end
