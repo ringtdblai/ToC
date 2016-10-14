@@ -16,6 +16,8 @@
 @property (nonatomic, strong, readonly) NSDictionary *animationData;
 @property (nonatomic, strong, readonly) FLAnimatedImage *gifImage;
 @property (nonatomic, assign, readonly) NSTimeInterval duration;
+@property (nonatomic, assign, readonly) CGFloat scaleX;
+@property (nonatomic, assign, readonly) CGFloat scaleY;
 
 - (instancetype)initWithImageURL:(NSURL *)imageURL;
 - (instancetype)initWithData:(NSDictionary *)dataDict;

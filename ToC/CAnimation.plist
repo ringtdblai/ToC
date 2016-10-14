@@ -17,11 +17,68 @@
 			</array>
 			<key>position</key>
 			<array>
-				<string>{160, 115}</string>
-				<string>{166, 121}</string>
-				<string>{162, 115}</string>
-				<string>{164, 117}</string>
-				<string>{162, 122}</string>
+				<string>{247, 145}</string>
+				<string>{248, 151}</string>
+				<string>{247, 149}</string>
+				<string>{247, 152}</string>
+				<string>{248, 158}</string>
+			</array>
+		</dict>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>proC_3</string>
+		<key>animation</key>
+		<dict>
+			<key>bounds</key>
+			<array>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+				<string>{{0, 0}, {44, 52}}</string>
+			</array>
+			<key>position</key>
+			<array>
+				<string>{373, 64}</string>
+				<string>{368, 64}</string>
+				<string>{371, 63}</string>
+				<string>{371, 61}</string>
+				<string>{368, 64}</string>
+				<string>{480, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
+				<string>{600, 64}</string>
 			</array>
 		</dict>
 	</dict>

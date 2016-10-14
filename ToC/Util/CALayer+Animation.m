@@ -24,7 +24,9 @@
         layer.contents = (__bridge id)(maskedImage.CGImage);
         layer.fillMode = kCAGravityResizeAspectFill;
         [layer applyAnimationWithDictionary:animation.animationData
-                                   duration:animation.duration];
+                                   duration:animation.duration
+                                     scaleX:animation.scaleX
+                                     scaleY:animation.scaleY];
 //        [layer addAnimationWith:animation.animationData];
         
     }
@@ -32,16 +34,18 @@
     return layer;
 }
 
-- (void)addAnimationWith:(NSDictionary *)dict
-{
-    CAKeyframeAnimation *animation= [self positionAnimationValues:dict[@"position"]];
-    [self addAnimation:animation forKey:@"frameAnimation"];
-
-}
+//- (void)addAnimationWith:(NSDictionary *)dict
+//{
+//    CAKeyframeAnimation *animation= [self positionAnimationValues:dict[@"position"]];
+//    [self addAnimation:animation forKey:@"frameAnimation"];
+//
+//}
 
 
 - (void)applyAnimationWithDictionary:(NSDictionary *)dict
                             duration:(NSTimeInterval)duration
+                              scaleX:(CGFloat)scaleX
+                              scaleY:(CGFloat)scaleY
 {
     CAAnimationGroup* group = [CAAnimationGroup animation];
     
@@ -50,9 +54,13 @@
     for (NSString *key in [dict allKeys]) {
         CAKeyframeAnimation *animation;
         if ([key isEqualToString:@"position"]) {
-             animation = [self positionAnimationValues:dict[key]];
+             animation = [self positionAnimationValues:dict[key]
+                                                scaleX:scaleX
+                                                scaleY:scaleY];
         } else if ([key isEqualToString:@"bounds"]){
-            animation = [self boundsAnimationValues:dict[key]];
+            animation = [self boundsAnimationValues:dict[key]
+                                             scaleX:scaleX
+                                             scaleY:scaleY];
         }
         
         if (animation) {
@@ -64,7 +72,7 @@
     group.duration = duration;
     group.repeatCount = INFINITY;
     group.removedOnCompletion = YES;
-    group.beginTime = 0.0001;
+    group.beginTime = 0;
     group.autoreverses = NO;
     group.fillMode = kCAFillModeRemoved;
     
@@ -72,6 +80,8 @@
 }
 
 - (CAKeyframeAnimation *)positionAnimationValues:(NSArray *)array
+                                          scaleX:(CGFloat)scaleX
+                                          scaleY:(CGFloat)scaleY
 {
     if (![array isKindOfClass:[NSArray class]]) {
         return nil;
@@ -83,7 +93,9 @@
     
     for (NSString *string in array) {
         CGPoint point = CGPointFromString(string);
-        [values addObject:[NSValue valueWithCGPoint:point]];
+        CGPoint scalePoint = CGPointMake(point.x * scaleX, point.y * scaleY);
+        
+        [values addObject:[NSValue valueWithCGPoint:scalePoint]];
     }
     
     frameAnim.values = values;
@@ -121,6 +133,8 @@
 //}
 
 - (CAKeyframeAnimation *)boundsAnimationValues:(NSArray *)array
+                                        scaleX:(CGFloat)scaleX
+                                        scaleY:(CGFloat)scaleY
 {
     if (![array isKindOfClass:[NSArray class]]) {
         return nil;
@@ -132,7 +146,8 @@
     
     for (NSString *string in array) {
         CGRect bounds = CGRectFromString(string);
-        [values addObject:[NSValue valueWithCGRect:bounds]];
+        CGRect scaleBounds = CGRectMake(0, 0, CGRectGetWidth(bounds) * scaleX, CGRectGetHeight(bounds) * scaleY);
+        [values addObject:[NSValue valueWithCGRect:scaleBounds]];
     }
     
     frameAnim.values = values;
