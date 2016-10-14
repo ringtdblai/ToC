@@ -11,6 +11,7 @@
 #import "Animation.h"
 @interface CALayer (Animation)
 
-+(instancetype)layerWithAnimation:(Animation *)animation;
++ (instancetype)layerWithAnimation:(Animation *)animation
+                         scaleSize:(CGSize)scaleSize;
 
 @end

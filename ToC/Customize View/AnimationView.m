@@ -38,7 +38,7 @@
 {
     [super layoutSubviews];
     self.imageView.frame = self.bounds;
-    self.animationLayer.bounds = CGRectMake(0, 0, 140, 140);
+    [self updateAnimationLayerWithANimation:self.animation];
 }
 
 #pragma mark - Setup UI
@@ -54,7 +54,6 @@
     imageView.backgroundColor = [UIColor blueColor];
     
     self.imageView.animatedImage = self.animation.gifImage;
-    [self updateAnimationLayerWithANimation:self.animation];
 
     
     [self addSubview:imageView];
@@ -76,7 +75,7 @@
         [self.animationLayer removeFromSuperlayer];
     }
     
-    CALayer *layer = [CALayer layerWithAnimation:animation];
+    CALayer *layer = [CALayer layerWithAnimation:animation scaleSize:self.bounds.size];
     [self.layer addSublayer:layer];
     
     self.animationLayer = layer;

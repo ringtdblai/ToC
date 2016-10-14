@@ -16,8 +16,6 @@
 @property (nonatomic, strong, readwrite) FLAnimatedImage *gifImage;
 @property (nonatomic, assign, readwrite) NSTimeInterval duration;
 
-@property (nonatomic, assign, readwrite) CGFloat scaleX;
-@property (nonatomic, assign, readwrite) CGFloat scaleY;
 @end
 
 @implementation Animation
@@ -43,11 +41,6 @@
         self.gifURL = [self generateGIFURL];
         self.gifImage = [self generateGIFImage];
         self.duration = [self generateDuration];
-        
-        CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
-        self.scaleX = screenWidth / self.gifImage.size.width;
-        self.scaleY = screenWidth / self.gifImage.size.height;
-        
     }
     
     return self;

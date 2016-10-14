@@ -12,7 +12,8 @@
 
 @implementation CALayer (Animation)
 
-+(instancetype)layerWithAnimation:(Animation *)animation
++ (instancetype)layerWithAnimation:(Animation *)animation
+                         scaleSize:(CGSize)scaleSize
 {
     CALayer *layer = [self layer];
     
@@ -23,24 +24,17 @@
         
         layer.contents = (__bridge id)(maskedImage.CGImage);
         layer.fillMode = kCAGravityResizeAspectFill;
+        
+        CGSize animationSize = animation.gifImage.size;
+        
         [layer applyAnimationWithDictionary:animation.animationData
                                    duration:animation.duration
-                                     scaleX:animation.scaleX
-                                     scaleY:animation.scaleY];
-//        [layer addAnimationWith:animation.animationData];
-        
+                                     scaleX:scaleSize.width / animationSize.width
+                                     scaleY:scaleSize.height / animationSize.height];
     }
     
     return layer;
 }
-
-//- (void)addAnimationWith:(NSDictionary *)dict
-//{
-//    CAKeyframeAnimation *animation= [self positionAnimationValues:dict[@"position"]];
-//    [self addAnimation:animation forKey:@"frameAnimation"];
-//
-//}
-
 
 - (void)applyAnimationWithDictionary:(NSDictionary *)dict
                             duration:(NSTimeInterval)duration
