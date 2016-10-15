@@ -11,19 +11,19 @@
 // Third Party
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
-#import <FLAnimatedImage/FLAnimatedImageView.h>
-#import <FLAnimatedImage/FLAnimatedImage.h>
 
 // UI
 #import "WBMaskedImageView.h"
+#import "AnimationView.h"
 
 #import "FaceManager.h"
 
 @interface AnimationEditViewController ()
 
-@property (nonatomic, weak) FLAnimatedImageView *imageView;
+@property (nonatomic, weak) AnimationView *imageView;
 @property (nonatomic, weak) UIButton *createButton;
 @property (nonatomic, weak) WBMaskedImageView *faceImageView;
+@property (nonatomic, weak) CALayer *animationLayer;
 
 @end
 
@@ -35,7 +35,6 @@
     
     [self constructView];
     [self bindData];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,29 +55,48 @@
 - (void)setupImageView
 {
 
-    FLAnimatedImageView *imageView = [FLAnimatedImageView new];
+    AnimationView *imageView = [AnimationView new];
+    imageView.animation = self.animation;
     
-    NSData *gifData = [NSData dataWithContentsOfURL:self.animation.gifURL];
-    FLAnimatedImage *gifImage = [FLAnimatedImage animatedImageWithGIFData:gifData];
-    
-    CGFloat ratio = 1;
-    
-    if (gifImage.size.width != 0) {
-        ratio = gifImage.size.height / gifImage.size.width;
-    }
 
-    [imageView setAnimatedImage:gifImage];
-    
     [self.view addSubview:imageView];
-    
+
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide);
         make.left.right.equalTo(self.view);
-        make.height.equalTo(imageView.mas_width).multipliedBy(ratio);
+        make.height.equalTo(imageView.mas_width);
     }];
-    
+
     self.imageView = imageView;
 }
+
+
+//- (void)setupImageView
+//{
+//
+//    FLAnimatedImageView *imageView = [FLAnimatedImageView new];
+//    
+//    NSData *gifData = [NSData dataWithContentsOfURL:self.animation.gifURL];
+//    FLAnimatedImage *gifImage = [FLAnimatedImage animatedImageWithGIFData:gifData];
+//    
+//    CGFloat ratio = 1;
+//    
+//    if (gifImage.size.width != 0) {
+//        ratio = gifImage.size.height / gifImage.size.width;
+//    }
+//
+//    [imageView setAnimatedImage:gifImage];
+//    
+//    [self.view addSubview:imageView];
+//    
+//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.mas_topLayoutGuide);
+//        make.left.right.equalTo(self.view);
+//        make.height.equalTo(imageView.mas_width).multipliedBy(ratio);
+//    }];
+//    
+//    self.imageView = imageView;
+//}
 
 - (void)setupCreateButton
 {
@@ -132,7 +150,8 @@
     [faceImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(containerView);
         make.bottom.equalTo(containerView).with.offset(-20);
-        make.width.height.equalTo(@80);
+        make.height.equalTo(containerView).with.offset(-20);
+        make.width.equalTo(faceImageView.mas_height);
     }];
     
     self.faceImageView = faceImageView;

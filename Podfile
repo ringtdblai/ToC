@@ -5,6 +5,7 @@
 
 # Utils
 pod 'ReactiveCocoa', '~> 2.4.4'
+pod 'BlocksKit', '~> 2.2.5'
 
 # UI
 pod 'YYKit', '~> 1.0.7'

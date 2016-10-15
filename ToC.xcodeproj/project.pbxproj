@@ -150,8 +150,12 @@
 		0932FC6E1DAF404600F05D90 /* Both_2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6A1DAF404600F05D90 /* Both_2.gif */; };
 		0932FC6F1DAF404600F05D90 /* Both_3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6B1DAF404600F05D90 /* Both_3.gif */; };
 		0932FC701DAF404600F05D90 /* Both_4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC6C1DAF404600F05D90 /* Both_4.gif */; };
+		0932FC721DAF43AA00F05D90 /* CAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0932FC711DAF43AA00F05D90 /* CAnimation.plist */; };
 		0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC741DAF47BE00F05D90 /* AnimationEditViewController.m */; };
 		0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC7A1DAF8E3600F05D90 /* FaceManager.m */; };
+		0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC7E1DB0BEB900F05D90 /* CALayer+Animation.m */; };
+		0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC811DB0CE1E00F05D90 /* AnimationView.m */; };
+		0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
@@ -341,10 +345,17 @@
 		0932FC6A1DAF404600F05D90 /* Both_2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_2.gif; sourceTree = "<group>"; };
 		0932FC6B1DAF404600F05D90 /* Both_3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_3.gif; sourceTree = "<group>"; };
 		0932FC6C1DAF404600F05D90 /* Both_4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Both_4.gif; sourceTree = "<group>"; };
+		0932FC711DAF43AA00F05D90 /* CAnimation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CAnimation.plist; sourceTree = "<group>"; };
 		0932FC731DAF47BE00F05D90 /* AnimationEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEditViewController.h; sourceTree = "<group>"; };
 		0932FC741DAF47BE00F05D90 /* AnimationEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationEditViewController.m; sourceTree = "<group>"; };
 		0932FC791DAF8E3500F05D90 /* FaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceManager.h; sourceTree = "<group>"; };
 		0932FC7A1DAF8E3600F05D90 /* FaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceManager.m; sourceTree = "<group>"; };
+		0932FC7D1DB0BEB900F05D90 /* CALayer+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Animation.h"; sourceTree = "<group>"; };
+		0932FC7E1DB0BEB900F05D90 /* CALayer+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Animation.m"; sourceTree = "<group>"; };
+		0932FC801DB0CE1E00F05D90 /* AnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
+		0932FC811DB0CE1E00F05D90 /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
+		0932FC861DB0DB3200F05D90 /* UIImage+Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Mask.h"; sourceTree = "<group>"; };
+		0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Mask.m"; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,12 +442,14 @@
 				0932FB451DAE36ED00F05D90 /* Models */,
 				0932FB3A1DAE18F000F05D90 /* Customize View */,
 				0932FB3E1DAE310800F05D90 /* View Controller */,
+				0932FC7C1DB0BDA700F05D90 /* Util */,
 				0932FB071DAE07F600F05D90 /* AppDelegate.h */,
 				0932FB081DAE07F600F05D90 /* AppDelegate.m */,
 				0932FB131DAE07F600F05D90 /* Assets.xcassets */,
 				0932FB181DAE07F600F05D90 /* Info.plist */,
 				0932FB101DAE07F600F05D90 /* ToC.xcdatamodeld */,
 				0932FB041DAE07F600F05D90 /* Supporting Files */,
+				0932FC711DAF43AA00F05D90 /* CAnimation.plist */,
 			);
 			path = ToC;
 			sourceTree = "<group>";
@@ -475,6 +488,8 @@
 				F888005C1DAF73F800DDD8DB /* Add Face */,
 				0932FB561DAE612200F05D90 /* SquareAnimationCollectionViewCell.h */,
 				0932FB571DAE612200F05D90 /* SquareAnimationCollectionViewCell.m */,
+				0932FC801DB0CE1E00F05D90 /* AnimationView.h */,
+				0932FC811DB0CE1E00F05D90 /* AnimationView.m */,
 			);
 			path = "Customize View";
 			sourceTree = "<group>";
@@ -683,6 +698,17 @@
 			path = Both;
 			sourceTree = "<group>";
 		};
+		0932FC7C1DB0BDA700F05D90 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0932FC7D1DB0BEB900F05D90 /* CALayer+Animation.h */,
+				0932FC7E1DB0BEB900F05D90 /* CALayer+Animation.m */,
+				0932FC861DB0DB3200F05D90 /* UIImage+Mask.h */,
+				0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		418D943B479A674F5059489A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -878,6 +904,7 @@
 				0932FC3D1DAE720500F05D90 /* proT_42.gif in Resources */,
 				0932FC4B1DAE720500F05D90 /* proT_55.gif in Resources */,
 				0932FBDF1DAE720500F05D90 /* proC_13.gif in Resources */,
+				0932FC721DAF43AA00F05D90 /* CAnimation.plist in Resources */,
 				0932FC221DAE720500F05D90 /* proT_18.gif in Resources */,
 				0932FC701DAF404600F05D90 /* Both_4.gif in Resources */,
 				0932FBDD1DAE720500F05D90 /* proC_11.gif in Resources */,
@@ -1057,6 +1084,7 @@
 				F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */,
 				F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */,
 				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
+				0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
 				F88800691DAF98BE00DDD8DB /* LoginViewController.m in Sources */,
 				0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */,
@@ -1067,6 +1095,7 @@
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
 				F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */,
 				F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */,
+				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,
 				F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */,
@@ -1074,6 +1103,7 @@
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
 				F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */,
 				F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */,
+				0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */,
 				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
 				0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */,
 			);

@@ -39,6 +39,14 @@
     self.imageView.originalImage = nil;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    NSLog(@"frame:%@",NSStringFromCGRect(self.imageView.frame));
+    NSLog(@"point:%@",NSStringFromCGPoint(self.imageView.center));
+
+    
+}
 #pragma mark - Setup UI
 - (void)setup
 {
