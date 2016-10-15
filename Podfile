@@ -15,6 +15,12 @@ pod 'MBProgressHUD', '~> 0.9'
 pod 'MaterialControls', :git => 'https://github.com/Mobiusbobs/Material-Controls-For-iOS', :branch => 'ios10'
 pod 'TGCameraViewController', '~> 2.2.7'
 
+# Social
+pod 'FBSDKCoreKit', '~> 4.10.1'
+pod 'FBSDKShareKit', '~>4.10.1'
+pod 'FBSDKLoginKit', '~> 4.10.0'
+pod 'FBSDKMessengerShareKit', '~> 1.3.2'
+
 target 'ToC' do
 
 end

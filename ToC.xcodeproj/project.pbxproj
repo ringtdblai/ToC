@@ -161,6 +161,14 @@
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
 		F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */; };
 		F88800661DAF7A0200DDD8DB /* FaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800651DAF7A0200DDD8DB /* FaceCollectionViewCell.m */; };
+		F88800691DAF98BE00DDD8DB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800681DAF98BE00DDD8DB /* LoginViewController.m */; };
+		F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = F888006B1DAF9F0E00DDD8DB /* AnchorUIMaker.m */; };
+		F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F888006D1DAFA22400DDD8DB /* RACCommand+Extension.m */; };
+		F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800701DAFA22400DDD8DB /* RACSignal+Extension.m */; };
+		F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800741DAFA37D00DDD8DB /* AlertView.m */; };
+		F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800771DAFA72000DDD8DB /* EmailViewController.m */; };
+		F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */; };
+		F888007F1DB09B2300DDD8DB /* ViewDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = F888007E1DB09B2300DDD8DB /* ViewDecorator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +367,22 @@
 		F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMaskedImageView.m; sourceTree = "<group>"; };
 		F88800641DAF7A0200DDD8DB /* FaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceCollectionViewCell.h; sourceTree = "<group>"; };
 		F88800651DAF7A0200DDD8DB /* FaceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCollectionViewCell.m; sourceTree = "<group>"; };
+		F88800671DAF98BE00DDD8DB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F88800681DAF98BE00DDD8DB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F888006A1DAF9F0E00DDD8DB /* AnchorUIMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnchorUIMaker.h; sourceTree = "<group>"; };
+		F888006B1DAF9F0E00DDD8DB /* AnchorUIMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnchorUIMaker.m; sourceTree = "<group>"; };
+		F888006D1DAFA22400DDD8DB /* RACCommand+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACCommand+Extension.m"; sourceTree = "<group>"; };
+		F888006E1DAFA22400DDD8DB /* RACCommand+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACCommand+Extension.h"; sourceTree = "<group>"; };
+		F888006F1DAFA22400DDD8DB /* RACSignal+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+Extension.h"; sourceTree = "<group>"; };
+		F88800701DAFA22400DDD8DB /* RACSignal+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+Extension.m"; sourceTree = "<group>"; };
+		F88800731DAFA37D00DDD8DB /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		F88800741DAFA37D00DDD8DB /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
+		F88800761DAFA72000DDD8DB /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		F88800771DAFA72000DDD8DB /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		F888007A1DAFA88A00DDD8DB /* KeyboardNotificationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardNotificationHelper.h; sourceTree = "<group>"; };
+		F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardNotificationHelper.m; sourceTree = "<group>"; };
+		F888007D1DB09B2300DDD8DB /* ViewDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDecorator.h; sourceTree = "<group>"; };
+		F888007E1DB09B2300DDD8DB /* ViewDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDecorator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +436,7 @@
 		0932FB031DAE07F600F05D90 /* ToC */ = {
 			isa = PBXGroup;
 			children = (
+				F88800791DAFA85900DDD8DB /* Utils */,
 				F88800601DAF78E100DDD8DB /* Third Party */,
 				0932FB591DAE720400F05D90 /* GIF */,
 				0932FB451DAE36ED00F05D90 /* Models */,
@@ -458,6 +483,8 @@
 		0932FB3A1DAE18F000F05D90 /* Customize View */ = {
 			isa = PBXGroup;
 			children = (
+				F888006A1DAF9F0E00DDD8DB /* AnchorUIMaker.h */,
+				F888006B1DAF9F0E00DDD8DB /* AnchorUIMaker.m */,
 				F888005C1DAF73F800DDD8DB /* Add Face */,
 				0932FB561DAE612200F05D90 /* SquareAnimationCollectionViewCell.h */,
 				0932FB571DAE612200F05D90 /* SquareAnimationCollectionViewCell.m */,
@@ -480,6 +507,10 @@
 				0932FB431DAE364400F05D90 /* ExportViewController.m */,
 				F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */,
 				F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */,
+				F88800671DAF98BE00DDD8DB /* LoginViewController.h */,
+				F88800681DAF98BE00DDD8DB /* LoginViewController.m */,
+				F88800761DAFA72000DDD8DB /* EmailViewController.h */,
+				F88800771DAFA72000DDD8DB /* EmailViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -713,6 +744,23 @@
 				F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */,
 			);
 			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		F88800791DAFA85900DDD8DB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F888007D1DB09B2300DDD8DB /* ViewDecorator.h */,
+				F888007E1DB09B2300DDD8DB /* ViewDecorator.m */,
+				F888007A1DAFA88A00DDD8DB /* KeyboardNotificationHelper.h */,
+				F888007B1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m */,
+				F88800731DAFA37D00DDD8DB /* AlertView.h */,
+				F88800741DAFA37D00DDD8DB /* AlertView.m */,
+				F888006D1DAFA22400DDD8DB /* RACCommand+Extension.m */,
+				F888006E1DAFA22400DDD8DB /* RACCommand+Extension.h */,
+				F888006F1DAFA22400DDD8DB /* RACSignal+Extension.h */,
+				F88800701DAFA22400DDD8DB /* RACSignal+Extension.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1034,9 +1082,11 @@
 			files = (
 				0932FB091DAE07F600F05D90 /* AppDelegate.m in Sources */,
 				F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */,
+				F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */,
 				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
 				0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
+				F88800691DAF98BE00DDD8DB /* LoginViewController.m in Sources */,
 				0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */,
 				0932FB521DAE5F3800F05D90 /* Animation.m in Sources */,
 				0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */,
@@ -1044,10 +1094,16 @@
 				0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */,
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
 				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
+				F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */,
+				F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */,
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,
+				F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */,
+				F888007F1DB09B2300DDD8DB /* ViewDecorator.m in Sources */,
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
 				0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */,
+				F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */,
+				F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */,
 				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
 				0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */,
 			);

@@ -84,6 +84,7 @@
 - (void)setupAddFaceButton
 {
     WBMaskedImageView *imageView = [WBMaskedImageView new];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.equalTo(@80);
