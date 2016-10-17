@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong, readonly) UIImage *selectedFace;
 @property (nonatomic, strong, readonly) UIImage *maskImage;
-
+@property (nonatomic, strong, readonly) UIImage *maskedImage;
 
 + (instancetype)sharedManager;
 

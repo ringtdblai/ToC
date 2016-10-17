@@ -8,6 +8,7 @@
 
 #import "UIImage+Mask.h"
 
+
 @implementation UIImage (Mask)
 
 + (UIImage *)maskImage:(UIImage *)image withMaskImage:(UIImage *)maskImage {
@@ -51,4 +52,21 @@
     return theImage;
 }
 
++ (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
+                              TopImage:(UIImage *)topImage
+                            drawInRect:(CGRect)rect
+{
+    CGSize size = bottomImage.size;
+    
+    UIGraphicsBeginImageContext(size);
+    
+    [bottomImage drawInRect:CGRectMake(0,0,size.width, size.height)];
+    [topImage drawInRect:rect];
+    
+    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return finalImage;
+}
 @end

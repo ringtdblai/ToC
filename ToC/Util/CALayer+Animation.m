@@ -18,9 +18,7 @@
     CALayer *layer = [self layer];
     
     if (layer) {
-        UIImage *originalImage = [FaceManager sharedManager].selectedFace;
-        UIImage *maskImage = [FaceManager sharedManager].maskImage;
-        UIImage *maskedImage = [UIImage maskImage:originalImage withMaskImage:maskImage];
+        UIImage *maskedImage = [FaceManager sharedManager].maskedImage;
         
         layer.contents = (__bridge id)(maskedImage.CGImage);
         layer.fillMode = kCAGravityResizeAspectFill;
