@@ -26,6 +26,8 @@
     
     if (self) {
         self.gifURL = imageURL;
+        self.gifImage = [self generateGIFImage];
+        self.duration = [self generateDuration];
     }
     
     return self;

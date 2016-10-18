@@ -10,6 +10,8 @@
 
 @interface ShareViewController : UIViewController
 
-@property (nonnull, strong) NSURL *sharedImageURL;
+@property (nonatomic, strong) NSURL *sharedImageURL;
+@property (nonatomic, assign) CGSize imageSize;
+
 
 @end

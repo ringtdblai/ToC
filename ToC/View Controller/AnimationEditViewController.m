@@ -22,6 +22,8 @@
 #import "FaceManager.h"
 #import "Animation+ExportGIF.h"
 
+
+
 @interface AnimationEditViewController ()
 
 @property (nonatomic, weak) AnimationView *imageView;
@@ -181,4 +183,5 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
 }
+
 @end

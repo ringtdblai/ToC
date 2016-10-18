@@ -117,4 +117,16 @@
     return array;
 }
 
+- (RACSignal *)exportGifSignal
+{
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self exportGifWithCompletionHandler:^(NSURL *gifURL) {
+            [subscriber sendNext:gifURL];
+            [subscriber sendCompleted];
+        }];
+        return nil;
+    }];
+}
 @end

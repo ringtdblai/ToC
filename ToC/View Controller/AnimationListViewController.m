@@ -17,9 +17,10 @@
 
 // Model
 #import "AnimationManager.h"
+#import "Animation+ExportGIF.h"
 
 // View Controller
-#import "AnimationEditViewController.h"
+#import "ShareViewController.h"
 
 @interface AnimationListViewController ()
 <
@@ -153,10 +154,13 @@
 {
     Animation *animation = self.animations[indexPath.row];
 
-    AnimationEditViewController *vc = [AnimationEditViewController new];
-    vc.animation = animation;
-    [self.navigationController pushViewController:vc
-                                         animated:YES];
+    @weakify(self);
+    [animation exportGifWithCompletionHandler:^(NSURL *gifURL) {
+        @strongify(self);
+        ShareViewController *vc = [ShareViewController new];
+        vc.sharedImageURL = gifURL;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
     
 }
 

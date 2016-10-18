@@ -51,7 +51,7 @@
 {
     FLAnimatedImageView *imageView = [FLAnimatedImageView new];
     
-    imageView.backgroundColor = [UIColor blueColor];
+    imageView.backgroundColor = [UIColor clearColor];
     
     self.imageView.animatedImage = self.animation.gifImage;
 

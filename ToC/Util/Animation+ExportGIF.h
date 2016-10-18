@@ -8,8 +8,12 @@
 
 #import "Animation.h"
 
+#import <ReactiveCocoa.h>
+
 @interface Animation (ExportGIF)
 
 - (void)exportGifWithCompletionHandler:(void (^)(NSURL *gifURL))handler;
+
+- (RACSignal *)exportGifSignal;
 
 @end
