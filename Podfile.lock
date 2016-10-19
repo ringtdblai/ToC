@@ -1,4 +1,32 @@
 PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.10.1):
+    - Bolts (~> 1.5)
+  - FBSDKLoginKit (4.10.1):
+    - FBSDKCoreKit
+  - FBSDKMessengerShareKit (1.3.2)
+  - FBSDKShareKit (4.10.1):
+    - FBSDKCoreKit
   - FLAnimatedImage (1.0.12)
   - Masonry (0.6.4)
   - MaterialControls (1.0.2)
@@ -10,35 +38,62 @@ PODS:
   - ReactiveCocoa/no-arc (2.4.7)
   - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - TGCameraViewController (2.2.7)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
+  - BlocksKit (~> 2.2.5)
+  - FBSDKCoreKit (~> 4.10.1)
+  - FBSDKLoginKit (~> 4.10.0)
+  - FBSDKMessengerShareKit (~> 1.3.2)
+  - FBSDKShareKit (~> 4.10.1)
   - FLAnimatedImage (~> 1.0)
   - Masonry (~> 0.6.1)
   - MaterialControls (from `https://github.com/Mobiusbobs/Material-Controls-For-iOS`,
     branch `ios10`)
   - MBProgressHUD (~> 0.9)
   - ReactiveCocoa (~> 2.4.4)
+  - SDCycleScrollView (~> 1.64)
+  - TGCameraViewController (from `https://github.com/Mobiusbobs/TGCameraViewController`)
   - YYKit (~> 1.0.7)
 
 EXTERNAL SOURCES:
   MaterialControls:
     :branch: ios10
     :git: https://github.com/Mobiusbobs/Material-Controls-For-iOS
+  TGCameraViewController:
+    :git: https://github.com/Mobiusbobs/TGCameraViewController
 
 CHECKOUT OPTIONS:
   MaterialControls:
     :commit: 557d9ebe48165fc31c7faa2951f02664ac34ea32
     :git: https://github.com/Mobiusbobs/Material-Controls-For-iOS
+  TGCameraViewController:
+    :commit: f2b6122370f57619e7f11870bf8fe7069a106a37
+    :git: https://github.com/Mobiusbobs/TGCameraViewController
 
 SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
+  FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
+  FBSDKMessengerShareKit: 41c0b1a667d685c9433f993eb9611b3d5074e1cb
+  FBSDKShareKit: 2fd887cce0056bdda91f99b2021d724a4fed8e88
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  TGCameraViewController: 2e1ca4c286f643df01c70c478422814ed025e4a7
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 COCOAPODS: 0.39.0
