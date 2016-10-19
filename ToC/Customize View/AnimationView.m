@@ -80,4 +80,5 @@
     
     self.animationLayer = layer;
 }
+
 @end

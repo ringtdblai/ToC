@@ -34,6 +34,8 @@
     
     NSArray *frameImages = [self generateFrameImages];
     
+    UIImage *watermark = [UIImage imageNamed:@"watermark"];
+    
     for (NSUInteger i= 0; i < self.gifImage.frameCount; i++) {
         NSNumber *delayTimeNumber = [self.gifImage.delayTimesForIndexes objectForKey:@(i)];
         if (delayTimeNumber) {
@@ -42,8 +44,9 @@
             UIImage *faceImage = [FaceManager sharedManager].maskedImage;
             CGRect rect = [self rectAtIndex:i];
             UIImage *finalImage = [UIImage mergeImageWithBottomImage:image
-                                                            TopImage:faceImage
-                                                          drawInRect:rect];
+                                                            topImage:faceImage
+                                                          drawInRect:rect
+                                                           watermark:watermark];
             
             NSDictionary *delayTimeProperty = @{(NSString *)kCGImagePropertyGIFDelayTime : @(delayTime)};
             NSDictionary *frameProperties = @{(NSString *)kCGImagePropertyGIFDictionary : delayTimeProperty};

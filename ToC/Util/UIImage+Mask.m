@@ -53,7 +53,7 @@
 }
 
 + (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
-                              TopImage:(UIImage *)topImage
+                              topImage:(UIImage *)topImage
                             drawInRect:(CGRect)rect
 {
     CGSize size = bottomImage.size;
@@ -62,6 +62,34 @@
     
     [bottomImage drawInRect:CGRectMake(0,0,size.width, size.height)];
     [topImage drawInRect:rect];
+    
+    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return finalImage;
+}
+
++ (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
+                              topImage:(UIImage *)topImage
+                            drawInRect:(CGRect)rect
+                             watermark:(UIImage *)watermark
+{
+    CGSize size = bottomImage.size;
+    
+    UIGraphicsBeginImageContext(size);
+    
+    [bottomImage drawInRect:CGRectMake(0,0,size.width, size.height)];
+    [topImage drawInRect:rect];
+    
+    if (watermark) {
+        CGFloat ratio = watermark.size.width / watermark.size.height;
+        CGFloat watermarkHeight = size.height * 0.2;
+        CGFloat watermarkWidth = watermarkHeight * ratio;
+        CGRect watermarkRect = CGRectMake(size.width - watermarkWidth, size.height - watermarkHeight, watermarkWidth, watermarkHeight);
+        
+        [watermark drawInRect:watermarkRect];
+    }
     
     UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
     

@@ -14,6 +14,11 @@
          withMaskImage:(UIImage *)maskImage;
 
 + (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
-                              TopImage:(UIImage *)topImage
+                              topImage:(UIImage *)topImage
                             drawInRect:(CGRect)rect;
+
++ (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
+                              topImage:(UIImage *)topImage
+                            drawInRect:(CGRect)rect
+                             watermark:(UIImage *)watermark;
 @end
