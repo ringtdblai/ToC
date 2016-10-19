@@ -13,7 +13,7 @@ pod 'Masonry', '~> 0.6.1'
 pod 'FLAnimatedImage', '~> 1.0'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'MaterialControls', :git => 'https://github.com/Mobiusbobs/Material-Controls-For-iOS', :branch => 'ios10'
-pod 'TGCameraViewController', '~> 2.2.7'
+pod 'TGCameraViewController', :git => 'https://github.com/Mobiusbobs/TGCameraViewController'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'SDCycleScrollView','~> 1.64'
 

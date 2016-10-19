@@ -61,18 +61,23 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9)
   - ReactiveCocoa (~> 2.4.4)
   - SDCycleScrollView (~> 1.64)
-  - TGCameraViewController (~> 2.2.7)
+  - TGCameraViewController (from `https://github.com/Mobiusbobs/TGCameraViewController`)
   - YYKit (~> 1.0.7)
 
 EXTERNAL SOURCES:
   MaterialControls:
     :branch: ios10
     :git: https://github.com/Mobiusbobs/Material-Controls-For-iOS
+  TGCameraViewController:
+    :git: https://github.com/Mobiusbobs/TGCameraViewController
 
 CHECKOUT OPTIONS:
   MaterialControls:
     :commit: 557d9ebe48165fc31c7faa2951f02664ac34ea32
     :git: https://github.com/Mobiusbobs/Material-Controls-For-iOS
+  TGCameraViewController:
+    :commit: f2b6122370f57619e7f11870bf8fe7069a106a37
+    :git: https://github.com/Mobiusbobs/TGCameraViewController
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6

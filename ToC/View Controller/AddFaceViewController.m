@@ -150,7 +150,7 @@
 {
     if (indexPath.row == 0) {
         TGCameraNavigationController *navigationController =
-        [TGCameraNavigationController newWithCameraDelegate:self];
+        [TGCameraNavigationController newWithCameraDelegate:self andDefaultMask:@"redMask"];
         
         [self presentViewController:navigationController animated:YES completion:nil];
     } else {
