@@ -161,6 +161,7 @@
 		099D09791DB4CD770084208A /* ShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 099D09781DB4CD770084208A /* ShareCollectionViewCell.m */; };
 		099D097D1DB4E8FF0084208A /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 099D097C1DB4E8FF0084208A /* UIImage+animatedGIF.m */; };
 		09D2237B1DB5FF6A0072AEC6 /* GIFConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2237A1DB5FF6A0072AEC6 /* GIFConverter.m */; };
+		09D2237F1DB7580B0072AEC6 /* TextStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2237E1DB7580B0072AEC6 /* TextStyles.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
@@ -372,6 +373,8 @@
 		099D097C1DB4E8FF0084208A /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		09D223791DB5FF6A0072AEC6 /* GIFConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFConverter.h; sourceTree = "<group>"; };
 		09D2237A1DB5FF6A0072AEC6 /* GIFConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFConverter.m; sourceTree = "<group>"; };
+		09D2237D1DB7580B0072AEC6 /* TextStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextStyles.h; sourceTree = "<group>"; };
+		09D2237E1DB7580B0072AEC6 /* TextStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextStyles.m; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +461,7 @@
 				0932FB451DAE36ED00F05D90 /* Models */,
 				0932FB3A1DAE18F000F05D90 /* Customize View */,
 				0932FB3E1DAE310800F05D90 /* View Controller */,
+				09D2237C1DB757EC0072AEC6 /* Style */,
 				0932FC7C1DB0BDA700F05D90 /* Util */,
 				0932FB071DAE07F600F05D90 /* AppDelegate.h */,
 				0932FB081DAE07F600F05D90 /* AppDelegate.m */,
@@ -734,6 +738,15 @@
 				0932FC8D1DB48B5F00F05D90 /* Animation+ExportGIF.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		09D2237C1DB757EC0072AEC6 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				09D2237D1DB7580B0072AEC6 /* TextStyles.h */,
+				09D2237E1DB7580B0072AEC6 /* TextStyles.m */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		418D943B479A674F5059489A /* Pods */ = {
@@ -1123,6 +1136,7 @@
 				099D097D1DB4E8FF0084208A /* UIImage+animatedGIF.m in Sources */,
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
 				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
+				09D2237F1DB7580B0072AEC6 /* TextStyles.m in Sources */,
 				F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */,
 				F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */,
 				099D09791DB4CD770084208A /* ShareCollectionViewCell.m in Sources */,

@@ -24,6 +24,7 @@
 #import <MessageUI/MessageUI.h>
 #import <FLAnimatedImageView.h>
 #import <FLAnimatedImage.h>
+#import <Accounts/Accounts.h>
 #import "UIImage+animatedGIF.h"
 #import "GIFConverter.h"
 
@@ -92,10 +93,6 @@
              @{
                  @"text":@"Facebook",
                  @"image":@"shareFacebook"
-                 },
-             @{
-                 @"text":@"Twitter",
-                 @"image":@"shareTwitter"
                  },
              @{
                  @"text":@"Messenger",
@@ -257,8 +254,6 @@
         [self saveImage];
     } else if ([platform isEqualToString:NSLocalizedString(@"More", nil)]) {
         [self shareImageToOtherPlatform];
-    } else if ([platform isEqualToString:@"Twitter"]){
-        [self shareImageToTwitter];
     } else if ([platform isEqualToString:@"Email"]){
         [self shareImageToEmail];
     } else if ([platform isEqualToString:@"Instagram"]){
@@ -376,6 +371,7 @@
         SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [tweetSheet setInitialText:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Share Pet Intro", nil)]];
         [tweetSheet addImage:[UIImage animatedImageWithAnimatedGIFURL:self.sharedImageURL]];
+        [tweetSheet addURL:self.sharedImageURL];
         
         tweetSheet.completionHandler = ^(SLComposeViewControllerResult result){
             if (result == SLComposeViewControllerResultDone) {
@@ -535,6 +531,48 @@
              }
          }];
         return nil;
+    }];
+}
+
+- (void)postImage:(UIImage *)image withStatus:(NSString *)status url:(NSURL*)urlData {
+    
+    // UIImage *img = [UIImage animatedImageNamed:@"test.gif" duration:3.0];
+    NSURL *url = [NSURL URLWithString:@"https://upload.twitter.com/1.1/media/upload.json"];
+    NSMutableDictionary *paramater = [[NSMutableDictionary alloc] init];
+    
+    //set the parameter here. to see others acceptable parameters find it at twitter API here : http://bit.ly/Occe6R
+    [paramater setObject:status forKey:@"status"];
+    
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if (granted == YES) {
+            
+            NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
+            
+            if ([accountsArray count] > 0) {
+                ACAccount *twitterAccount = [accountsArray lastObject];
+                
+                SLRequest *postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:url parameters:paramater];
+                
+                NSData *imageData = [NSData dataWithContentsOfURL:urlData]; // GIF89a file
+                
+                [postRequest addMultipartData:imageData withName:@"media[]" type:@"image/gif" filename:@"animated.gif"];
+                
+                [postRequest setAccount:twitterAccount]; // or  postRequest.account = twitterAccount;
+                
+                [postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                    NSString *output = [NSString stringWithFormat:@"HTTP response status: %i", [urlResponse statusCode]];
+                    NSLog(@"output = %@",output);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                    });
+                    
+                }];
+            }
+            
+        }
     }];
 }
 

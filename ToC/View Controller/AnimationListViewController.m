@@ -119,11 +119,13 @@
          NSMutableArray *array = [NSMutableArray array];
          
          switch ([type integerValue]) {
-             case AnimationTypeC:
+             case AnimationTypeClinton:
                  [array addObjectsFromArray:cAnimations];
+                 [array addObjectsFromArray:bothAnimations];
                  break;
-             case AnimationTypeT:
+             case AnimationTypeTrump:
                  [array addObjectsFromArray:tAnimations];
+                 [array addObjectsFromArray:bothAnimations];
                  break;
              default:
                  [array addObjectsFromArray:bothAnimations];

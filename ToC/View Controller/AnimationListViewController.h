@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, AnimationType) {
-    AnimationTypeBoth = 0,
-    AnimationTypeC = 1,
-    AnimationTypeT = 2
+    AnimationTypeClinton = 0,
+    AnimationTypeTrump = 1
 };
 
 @interface AnimationListViewController : UIViewController
