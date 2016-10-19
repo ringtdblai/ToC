@@ -10,6 +10,10 @@
 
 @interface UIImage (Mask)
 
-+ (UIImage *)maskImage:(UIImage *)image withMaskImage:(UIImage *)maskImage;
++ (UIImage *)maskImage:(UIImage *)image
+         withMaskImage:(UIImage *)maskImage;
 
++ (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
+                              TopImage:(UIImage *)topImage
+                            drawInRect:(CGRect)rect;
 @end

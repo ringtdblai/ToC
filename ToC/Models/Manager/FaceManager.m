@@ -10,12 +10,15 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "UIImage+Mask.h"
+
 @interface FaceManager ()
 
 @property (nonatomic, strong, readwrite) NSArray *faces;
 
 @property (nonatomic, strong, readwrite) UIImage *selectedFace;
 @property (nonatomic, strong, readwrite) UIImage *maskImage;
+@property (nonatomic, strong, readwrite) UIImage *maskedImage;
 
 @end
 
@@ -67,6 +70,14 @@
      }];
     
     self.maskImage = [UIImage imageNamed:@"catOutline"];
+    
+    RAC(self, maskedImage) = [RACSignal combineLatest:@[RACObserve(self, selectedFace),
+                                                        RACObserve(self, maskImage)]
+                                               reduce:^id(UIImage *selectedFace, UIImage *maskImage)
+                              {
+                                  return [UIImage maskImage:selectedFace
+                                              withMaskImage:maskImage];
+                              }];
 }
 
 #pragma mark - Edit

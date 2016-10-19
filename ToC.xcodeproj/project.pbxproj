@@ -156,6 +156,11 @@
 		0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC7E1DB0BEB900F05D90 /* CALayer+Animation.m */; };
 		0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC811DB0CE1E00F05D90 /* AnimationView.m */; };
 		0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */; };
+		0932FC8E1DB48B5F00F05D90 /* Animation+ExportGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932FC8D1DB48B5F00F05D90 /* Animation+ExportGIF.m */; };
+		099D09761DB4B35E0084208A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099D09751DB4B35E0084208A /* ShareViewController.m */; };
+		099D09791DB4CD770084208A /* ShareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 099D09781DB4CD770084208A /* ShareCollectionViewCell.m */; };
+		099D097D1DB4E8FF0084208A /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 099D097C1DB4E8FF0084208A /* UIImage+animatedGIF.m */; };
+		09D2237B1DB5FF6A0072AEC6 /* GIFConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2237A1DB5FF6A0072AEC6 /* GIFConverter.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
@@ -356,6 +361,17 @@
 		0932FC811DB0CE1E00F05D90 /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
 		0932FC861DB0DB3200F05D90 /* UIImage+Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Mask.h"; sourceTree = "<group>"; };
 		0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Mask.m"; sourceTree = "<group>"; };
+		0932FC8C1DB48B5F00F05D90 /* Animation+ExportGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Animation+ExportGIF.h"; sourceTree = "<group>"; };
+		0932FC8D1DB48B5F00F05D90 /* Animation+ExportGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Animation+ExportGIF.m"; sourceTree = "<group>"; };
+		099D09741DB4B35E0084208A /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		099D09751DB4B35E0084208A /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		099D09771DB4CD770084208A /* ShareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCollectionViewCell.h; sourceTree = "<group>"; };
+		099D09781DB4CD770084208A /* ShareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCollectionViewCell.m; sourceTree = "<group>"; };
+		099D097A1DB4D6710084208A /* DeviceDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDetection.h; sourceTree = "<group>"; };
+		099D097B1DB4E8FF0084208A /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		099D097C1DB4E8FF0084208A /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		09D223791DB5FF6A0072AEC6 /* GIFConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFConverter.h; sourceTree = "<group>"; };
+		09D2237A1DB5FF6A0072AEC6 /* GIFConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFConverter.m; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -488,6 +504,8 @@
 				F888005C1DAF73F800DDD8DB /* Add Face */,
 				0932FB561DAE612200F05D90 /* SquareAnimationCollectionViewCell.h */,
 				0932FB571DAE612200F05D90 /* SquareAnimationCollectionViewCell.m */,
+				099D09771DB4CD770084208A /* ShareCollectionViewCell.h */,
+				099D09781DB4CD770084208A /* ShareCollectionViewCell.m */,
 				0932FC801DB0CE1E00F05D90 /* AnimationView.h */,
 				0932FC811DB0CE1E00F05D90 /* AnimationView.m */,
 			);
@@ -511,6 +529,8 @@
 				F88800681DAF98BE00DDD8DB /* LoginViewController.m */,
 				F88800761DAFA72000DDD8DB /* EmailViewController.h */,
 				F88800771DAFA72000DDD8DB /* EmailViewController.m */,
+				099D09741DB4B35E0084208A /* ShareViewController.h */,
+				099D09751DB4B35E0084208A /* ShareViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -701,10 +721,17 @@
 		0932FC7C1DB0BDA700F05D90 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				09D223791DB5FF6A0072AEC6 /* GIFConverter.h */,
+				09D2237A1DB5FF6A0072AEC6 /* GIFConverter.m */,
+				099D097B1DB4E8FF0084208A /* UIImage+animatedGIF.h */,
+				099D097C1DB4E8FF0084208A /* UIImage+animatedGIF.m */,
+				099D097A1DB4D6710084208A /* DeviceDetection.h */,
 				0932FC7D1DB0BEB900F05D90 /* CALayer+Animation.h */,
 				0932FC7E1DB0BEB900F05D90 /* CALayer+Animation.m */,
 				0932FC861DB0DB3200F05D90 /* UIImage+Mask.h */,
 				0932FC871DB0DB3200F05D90 /* UIImage+Mask.m */,
+				0932FC8C1DB48B5F00F05D90 /* Animation+ExportGIF.h */,
+				0932FC8D1DB48B5F00F05D90 /* Animation+ExportGIF.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1090,20 +1117,25 @@
 				0932FC7B1DAF8E3600F05D90 /* FaceManager.m in Sources */,
 				0932FB521DAE5F3800F05D90 /* Animation.m in Sources */,
 				0932FB411DAE310800F05D90 /* AnimationListViewController.m in Sources */,
+				0932FC8E1DB48B5F00F05D90 /* Animation+ExportGIF.m in Sources */,
 				F88800661DAF7A0200DDD8DB /* FaceCollectionViewCell.m in Sources */,
 				0932FC5F1DAEA6FB00F05D90 /* MainViewController.m in Sources */,
+				099D097D1DB4E8FF0084208A /* UIImage+animatedGIF.m in Sources */,
 				0932FB061DAE07F600F05D90 /* main.m in Sources */,
+				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
 				F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */,
 				F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */,
-				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
+				099D09791DB4CD770084208A /* ShareCollectionViewCell.m in Sources */,
 				0932FB491DAE39A400F05D90 /* AnimationManager.m in Sources */,
 				0932FB581DAE612200F05D90 /* SquareAnimationCollectionViewCell.m in Sources */,
 				F888007C1DAFA88A00DDD8DB /* KeyboardNotificationHelper.m in Sources */,
 				F888007F1DB09B2300DDD8DB /* ViewDecorator.m in Sources */,
+				099D09761DB4B35E0084208A /* ShareViewController.m in Sources */,
+				09D2237B1DB5FF6A0072AEC6 /* GIFConverter.m in Sources */,
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
+				0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */,
 				F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */,
 				F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */,
-				0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */,
 				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
 				0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */,
 			);
@@ -1238,6 +1270,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 64ZLT48G98;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ToC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1253,6 +1286,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 64ZLT48G98;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ToC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

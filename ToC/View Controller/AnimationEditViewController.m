@@ -8,6 +8,8 @@
 
 #import "AnimationEditViewController.h"
 
+#import "ShareViewController.h"
+
 // Third Party
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
@@ -16,7 +18,11 @@
 #import "WBMaskedImageView.h"
 #import "AnimationView.h"
 
+// Other
 #import "FaceManager.h"
+#import "Animation+ExportGIF.h"
+
+
 
 @interface AnimationEditViewController ()
 
@@ -109,6 +115,8 @@
                                                       blue:237.0/255.0
                                                      alpha:1]];
     
+    [createButton addTarget:self action:@selector(exportGIF) forControlEvents:UIControlEventTouchUpInside];
+    
     [self.view addSubview:createButton];
     
     [createButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -163,7 +171,17 @@
     RAC(self.faceImageView, originalImage) = RACObserve([FaceManager sharedManager], selectedFace);
     RAC(self.faceImageView, maskImage) = RACObserve([FaceManager sharedManager], maskImage);
     
-    
-    
 }
+
+- (void)exportGIF
+{
+    @weakify(self);
+    [self.animation exportGifWithCompletionHandler:^(NSURL *gifURL) {
+        @strongify(self);
+        ShareViewController *vc = [ShareViewController new];
+        vc.sharedImageURL = gifURL;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+}
+
 @end
