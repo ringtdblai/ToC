@@ -38,6 +38,11 @@ PODS:
   - ReactiveCocoa/no-arc (2.4.7)
   - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - TGCameraViewController (2.2.7)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -55,6 +60,7 @@ DEPENDENCIES:
     branch `ios10`)
   - MBProgressHUD (~> 0.9)
   - ReactiveCocoa (~> 2.4.4)
+  - SDCycleScrollView (~> 1.64)
   - TGCameraViewController (~> 2.2.7)
   - YYKit (~> 1.0.7)
 
@@ -80,6 +86,8 @@ SPEC CHECKSUMS:
   MaterialControls: bdeeb94aa049b73f70739a5514be137d2d45c08a
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TGCameraViewController: 2e1ca4c286f643df01c70c478422814ed025e4a7
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 

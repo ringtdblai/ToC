@@ -15,6 +15,7 @@ pod 'MBProgressHUD', '~> 0.9'
 pod 'MaterialControls', :git => 'https://github.com/Mobiusbobs/Material-Controls-For-iOS', :branch => 'ios10'
 pod 'TGCameraViewController', '~> 2.2.7'
 pod 'MBProgressHUD', '~> 0.9'
+pod 'SDCycleScrollView','~> 1.64'
 
 # Social
 pod 'FBSDKCoreKit', '~> 4.10.1'

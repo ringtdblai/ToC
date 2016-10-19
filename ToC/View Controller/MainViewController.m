@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
 #import <MaterialControls/MDTabBarViewController.h>
+#import <SDCycleScrollView.h>
 
 // View Controller
 #import "AnimationListViewController.h"
@@ -25,11 +26,13 @@
 
 @interface MainViewController ()
 <
-    MDTabBarViewControllerDelegate
+    MDTabBarViewControllerDelegate,
+    SDCycleScrollViewDelegate
 >
 
 @property (nonatomic, weak) MDTabBarViewController *tabBarViewController;
 @property (nonatomic, weak) WBMaskedImageView *faceImageView;
+@property (nonatomic, weak) SDCycleScrollView *cycleScrollView;
 @end
 
 @implementation MainViewController
@@ -41,6 +44,7 @@
     
     [self constructView];
     [self bindData];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
 }
 
@@ -53,9 +57,27 @@
 
 - (void)constructView
 {
+    [self setupBanner];
     [self setupTabBarViewController];
     [self setupAddFaceButton];
 }
+
+- (void)setupBanner
+{
+    float bannerHeight = floorf(90.0f*self.view.frame.size.width/728.0f);
+    UIImage *image1 = [UIImage imageNamed:NSLocalizedString(@"ad1", nil)];
+    UIImage *image2 = [UIImage imageNamed:NSLocalizedString(@"ad2", nil)];
+    UIImage *image3 = [UIImage imageNamed:NSLocalizedString(@"ad3", nil)];
+    
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, self.view.frame.size.height - bannerHeight - 64, [UIScreen mainScreen].bounds.size.width, bannerHeight) imageNamesGroup:@[image1,image2,image3]];
+    cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+    cycleScrollView.showPageControl = NO;
+    cycleScrollView.delegate = self;
+    
+    [self.view addSubview:cycleScrollView];
+    self.cycleScrollView = cycleScrollView;
+}
+
 
 - (void)setupTabBarViewController
 {
@@ -74,8 +96,9 @@
     [tabBarViewController didMoveToParentViewController:self];
     
     [tabBarViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self.view);
+        make.left.right.equalTo(self.view);
         make.top.equalTo(self.mas_topLayoutGuide);
+        make.bottom.equalTo(self.cycleScrollView.mas_top);
     }];
     
     self.tabBarViewController = tabBarViewController;
@@ -144,5 +167,12 @@
         
     }];
 }
+
+#pragma mark - SDCycleScrollView Delegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://taps.io/Bboowji2"]];
+}
+
 
 @end
