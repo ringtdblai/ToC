@@ -13,12 +13,14 @@
 #import <FLAnimatedImageView.h>
 #import <FLAnimatedImage.h>
 
+#import "AnimationView.h"
+
 
 @interface SquareAnimationCollectionViewCell ()
 
 @property (nonatomic, strong) Animation *animation;
 
-@property (nonatomic, weak) FLAnimatedImageView *imageView;
+@property (nonatomic, weak) AnimationView *imageView;
 
 @end
 
@@ -44,8 +46,8 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.imageView.animatedImage = nil;
-    self.imageView.image = nil;
+
+    self.imageView.animation = nil;
 }
 #pragma mark - Setup UI
 - (void)constructView
@@ -55,7 +57,7 @@
 
 - (void)setupImageView
 {
-    FLAnimatedImageView *imageView = [FLAnimatedImageView new];
+    AnimationView *imageView = [AnimationView new];
     
     [self addSubview:imageView];
     
@@ -65,10 +67,7 @@
 #pragma mark - Update
 - (void)updateWithAnimation:(Animation *)animation
 {
-    NSData *gifData = [NSData dataWithContentsOfURL:animation.gifURL];
-    FLAnimatedImage *gifImage = [FLAnimatedImage animatedImageWithGIFData:gifData];
-    
-    self.imageView.animatedImage = gifImage;
+    self.imageView.animation = animation;
 }
 
 @end
