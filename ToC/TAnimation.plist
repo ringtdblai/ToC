@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   TAnimation.plist
-   ToC
-
-   Created by LinYiting on 2016/10/19.
-   Copyright (c) 2016年 Mobiusbobs. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<array>
+	<dict>
+		<key>name</key>
+		<string>proC_2</string>
+		<key>animation</key>
+		<dict>
+			<key>bounds</key>
+			<array>
+				<string>{{0, 0}, {105, 130}}</string>
+				<string>{{0, 0}, {105, 137}}</string>
+				<string>{{0, 0}, {96, 140}}</string>
+				<string>{{0, 0}, {100, 135}}</string>
+				<string>{{0, 0}, {100, 130}}</string>
+			</array>
+			<key>position</key>
+			<array>
+				<string>{247, 145}</string>
+				<string>{248, 151}</string>
+				<string>{247, 149}</string>
+				<string>{247, 152}</string>
+				<string>{248, 158}</string>
+			</array>
+		</dict>
+	</dict>
+</array>
 </plist>

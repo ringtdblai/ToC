@@ -11,25 +11,32 @@
 // Third Party
 #import <ReactiveCocoa.h>
 #import <Masonry.h>
+#import <SDCycleScrollView.h>
 
 // UI
 #import "SquareAnimationCollectionViewCell.h"
 
 // Model
+#import "FaceManager.h"
 #import "AnimationManager.h"
 #import "Animation+ExportGIF.h"
 
 // View Controller
 #import "ShareViewController.h"
+#import "AddFaceViewController.h"
 
 @interface AnimationListViewController ()
 <
     UICollectionViewDataSource,
-    UICollectionViewDelegate
+    UICollectionViewDelegate,
+    SDCycleScrollViewDelegate
 >
 
 @property (nonatomic, strong) NSArray *animations;
+
+@property (nonatomic, weak) UIImageView *faceImageView;
 @property (nonatomic, weak) UICollectionView *collectionView;
+@property (nonatomic, weak) SDCycleScrollView *cycleScrollView;
 
 @end
 
@@ -38,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self constructView];
     [self bindData];
@@ -59,7 +68,44 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self setupTopLine];
+    [self setupBanner];
     [self setupCollectionView];
+    
+    [self setupAddFaceButton];
+
+}
+
+- (void)setupTopLine
+{
+    UIView *topLineView = [UIView new];
+    topLineView.backgroundColor = [UIColor blackColor];
+    
+    [self.view addSubview:topLineView];
+    
+    [topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@0.5);
+    }];
+}
+
+- (void)setupBanner
+{
+    float bannerHeight = floorf(90.0f*self.view.frame.size.width/728.0f);
+    UIImage *image1 = [UIImage imageNamed:NSLocalizedString(@"ad1", nil)];
+    UIImage *image2 = [UIImage imageNamed:NSLocalizedString(@"ad2", nil)];
+    UIImage *image3 = [UIImage imageNamed:NSLocalizedString(@"ad3", nil)];
+    
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, self.view.frame.size.height - bannerHeight - 64, [UIScreen mainScreen].bounds.size.width, bannerHeight)
+                                                                     imageNamesGroup:@[image1,image2,image3]];
+    
+    cycleScrollView.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
+    cycleScrollView.showPageControl = NO;
+    cycleScrollView.delegate = self;
+    
+    [self.view addSubview:cycleScrollView];
+    self.cycleScrollView = cycleScrollView;
 }
 
 - (void)setupCollectionView
@@ -86,23 +132,63 @@
     [self.view addSubview:collectionView];
     
     [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.mas_topLayoutGuide).with.offset(0.5);
+        make.bottom.equalTo(self.cycleScrollView.mas_top);
     }];
     
     self.collectionView = collectionView;
 }
 
+- (void)setupAddFaceButton
+{
+    
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@160);
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.cycleScrollView.mas_top).with.offset(-5);
+    }];
+    
+    self.faceImageView = imageView;
+    
+    UIImageView *border = [UIImageView new];
+    border.image = [UIImage imageNamed:@"cropImage"];
+    [self.view addSubview:border];
+    [border mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@165);
+        make.center.equalTo(imageView);
+    }];
+    
+    self.faceImageView = imageView;
+    
+    UIButton *faceButton = [UIButton buttonWithType:UIButtonTypeCustom];;
+    [faceButton addTarget:self
+                   action:@selector(showAddFaceVC)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:faceButton];
+    
+    [faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(imageView);
+    }];
+    
+}
+
 #pragma mark - Bind Data
 - (void)bindData
 {
-    RACSignal *cAnimations = [RACObserve([AnimationManager sharedManager], cAnimations)
-                              ignore:nil];
+    RACSignal *cAnimations = [[RACObserve([AnimationManager sharedManager], cAnimations)
+                              ignore:nil] startWith:@[]];
 
-    RACSignal *tAnimations = [RACObserve([AnimationManager sharedManager], tAnimations)
-                              ignore:nil];
+    RACSignal *tAnimations = [[RACObserve([AnimationManager sharedManager], tAnimations)
+                              ignore:nil] startWith:@[]];
     
-    RACSignal *bothAnimations = [RACObserve([AnimationManager sharedManager], bothAnimations)
-                              ignore:nil];
+    RACSignal *bothAnimations = [[RACObserve([AnimationManager sharedManager], bothAnimations)
+                              ignore:nil] startWith:@[]];
     
     RACSignal *typeSignal = [RACObserve(self, type) ignore:nil];
     
@@ -119,11 +205,13 @@
          NSMutableArray *array = [NSMutableArray array];
          
          switch ([type integerValue]) {
-             case AnimationTypeC:
+             case AnimationTypeClinton:
                  [array addObjectsFromArray:cAnimations];
+                 [array addObjectsFromArray:bothAnimations];
                  break;
-             case AnimationTypeT:
+             case AnimationTypeTrump:
                  [array addObjectsFromArray:tAnimations];
+                 [array addObjectsFromArray:bothAnimations];
                  break;
              default:
                  [array addObjectsFromArray:bothAnimations];
@@ -137,6 +225,8 @@
         @strongify(self);
         [self.collectionView reloadData];
     }];
+    
+    RAC(self.faceImageView, image) = RACObserve([FaceManager sharedManager], maskedImage);
 }
 
 #pragma mark - UICollectionView Delegate
@@ -168,6 +258,22 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     
+}
+
+#pragma mark - Button Action
+
+- (void)showAddFaceVC
+{
+    AddFaceViewController *vc = [AddFaceViewController new];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+}
+
+#pragma mark - SDCycleScrollView Delegate
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://taps.io/Bboowji2"]];
 }
 
 @end
