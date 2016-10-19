@@ -72,6 +72,7 @@
 
 + (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
                               topImage:(UIImage *)topImage
+                          topTransform:(CGAffineTransform)transform
                             drawInRect:(CGRect)rect
                              watermark:(UIImage *)watermark
 {
@@ -80,16 +81,24 @@
     UIGraphicsBeginImageContext(size);
     
     [bottomImage drawInRect:CGRectMake(0,0,size.width, size.height)];
-    [topImage drawInRect:rect];
     
     if (watermark) {
-        CGFloat ratio = watermark.size.width / watermark.size.height;
-        CGFloat watermarkHeight = size.height * 0.2;
-        CGFloat watermarkWidth = watermarkHeight * ratio;
+        CGFloat ratio = watermark.size.height /  watermark.size.width ;
+        CGFloat watermarkWidth = size.width * 0.5;
+        CGFloat watermarkHeight = watermarkWidth * ratio;
         CGRect watermarkRect = CGRectMake(size.width - watermarkWidth, size.height - watermarkHeight, watermarkWidth, watermarkHeight);
         
         [watermark drawInRect:watermarkRect];
     }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    float xTranslation = CGRectGetMidX(rect);
+    float yTranslation = CGRectGetMidY(rect);
+    
+    CGContextTranslateCTM(context, xTranslation, yTranslation);
+    CGContextConcatCTM(context, transform);
+    CGContextTranslateCTM(context, -xTranslation, -yTranslation);
+    [topImage drawInRect:rect];
     
     UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
     

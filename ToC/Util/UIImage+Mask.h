@@ -19,6 +19,7 @@
 
 + (UIImage *)mergeImageWithBottomImage:(UIImage *)bottomImage
                               topImage:(UIImage *)topImage
+                          topTransform:(CGAffineTransform)transform
                             drawInRect:(CGRect)rect
                              watermark:(UIImage *)watermark;
 @end

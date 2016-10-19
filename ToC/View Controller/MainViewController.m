@@ -110,12 +110,23 @@
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.equalTo(@80);
+        make.width.height.equalTo(@160);
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).with.offset(-30);
     }];
     
     self.faceImageView = imageView;
+    
+    UIImageView *border = [UIImageView new];
+    border.image = [UIImage imageNamed:@"cropImage"];
+    [self.view addSubview:border];
+    
+    [border mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.equalTo(@165);
+        make.center.equalTo(imageView);
+    }];
+    
+    
     
     UIButton *faceButton = [UIButton buttonWithType:UIButtonTypeCustom];;
     [faceButton addTarget:self

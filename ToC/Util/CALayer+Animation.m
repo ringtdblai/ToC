@@ -53,7 +53,12 @@
             animation = [self boundsAnimationValues:dict[key]
                                              scaleX:scaleX
                                              scaleY:scaleY];
+        } else if ([key isEqualToString:@"rotation"]){
+            animation = [self rotateAnimationValues:dict[key]
+                                             scaleX:scaleX
+                                             scaleY:scaleY];
         }
+
         
         if (animation) {
             [animations addObject:animation];
@@ -148,5 +153,30 @@
     
     return frameAnim;
 }
+
+- (CAKeyframeAnimation *)rotateAnimationValues:(NSArray *)array
+                                        scaleX:(CGFloat)scaleX
+                                        scaleY:(CGFloat)scaleY
+{
+    if (![array isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    
+    CAKeyframeAnimation* frameAnim = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    
+    NSMutableArray *values = [NSMutableArray array];
+    
+    for (NSString *string in array) {
+        
+        [values addObject:@(M_PI * [string floatValue]/180.0f)];
+    }
+    
+    frameAnim.values = values;
+    frameAnim.calculationMode = kCAAnimationLinear;
+    
+    
+    return frameAnim;
+}
+
 
 @end

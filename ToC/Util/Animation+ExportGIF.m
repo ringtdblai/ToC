@@ -43,10 +43,10 @@
             UIImage *image = frameImages[i];
             UIImage *faceImage = [FaceManager sharedManager].maskedImage;
             CGRect rect = [self rectAtIndex:i];
+            CGAffineTransform rotationTransform = CGAffineTransformMakeRotation(M_PI*[self.animationData[@"rotation"][i] floatValue]/180.0f);
             UIImage *finalImage = [UIImage mergeImageWithBottomImage:image
                                                             topImage:faceImage
-                                                          drawInRect:rect
-                                                           watermark:watermark];
+                                                        topTransform:rotationTransform drawInRect:rect watermark:watermark];
             
             NSDictionary *delayTimeProperty = @{(NSString *)kCGImagePropertyGIFDelayTime : @(delayTime)};
             NSDictionary *frameProperties = @{(NSString *)kCGImagePropertyGIFDictionary : delayTimeProperty};
