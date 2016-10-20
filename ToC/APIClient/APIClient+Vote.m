@@ -20,7 +20,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     if (name) {
-        params[@"votoFor"] = name;
+        params[@"voteFor"] = name;
     }
 
     return [self rac_POST:API_VOTE_PATH parameters:params];
