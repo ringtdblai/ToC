@@ -145,7 +145,7 @@
     [touButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     
     touButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://pamily.today/app/landing/terms"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://yiting6.wixsite.com/votewithpet/about"]];
         return [RACSignal empty];
     }];
     
