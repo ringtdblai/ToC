@@ -56,7 +56,7 @@
     
     RAC(self, cAnimations) = [[[[[GifAnimation findAll]
                            where:@"type == %@ OR type == %@"
-                           args:@[@"c", @"both"]]
+                           args:@[@"c", @"b"]]
                           sortBy:@"uniqueId"]
                          fetchWithTrigger:trigger]map:^id(NSArray *x)
                         {
@@ -65,7 +65,7 @@
     
     RAC(self, tAnimations) = [[[[[GifAnimation findAll]
                                  where:@"type == %@ OR type == %@"
-                                 args:@[@"t", @"both"]]
+                                 args:@[@"t", @"b"]]
                                 sortBy:@"uniqueId"]
                                fetchWithTrigger:trigger]map:^id(NSArray *x)
                               {

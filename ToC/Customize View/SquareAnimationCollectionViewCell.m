@@ -12,13 +12,14 @@
 #import <Masonry.h>
 #import <FLAnimatedImageView.h>
 #import <FLAnimatedImage.h>
+#import "SDWebImage+Swizzle.h"
 
 #import "AnimationView.h"
 
 
 @interface SquareAnimationCollectionViewCell ()
 
-@property (nonatomic, strong) Animation *animation;
+@property (nonatomic, strong) GifAnimation *animation;
 
 @property (nonatomic, weak) AnimationView *imageView;
 
@@ -65,7 +66,7 @@
 }
 
 #pragma mark - Update
-- (void)updateWithAnimation:(Animation *)animation
+- (void)updateWithAnimation:(GifAnimation *)animation
 {
     self.imageView.animation = animation;
 }

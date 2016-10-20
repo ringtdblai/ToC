@@ -8,7 +8,10 @@
 
 #import "AnimationView.h"
 
-#import <FLAnimatedImage/FLAnimatedImageView.h>
+#import <FLAnimatedImageView.h>
+#import <FLAnimatedImage.h>
+#import "SDWebImage+Swizzle.h"
+#import <UIImageView+WebCache.h>
 
 #import "Animation.h"
 
@@ -53,23 +56,19 @@
     
     imageView.backgroundColor = [UIColor clearColor];
     
-    self.imageView.animatedImage = self.animation.gifImage;
-
-    
     [self addSubview:imageView];
     
     self.imageView = imageView;
 }
 
-- (void)setAnimation:(Animation *)animation
+- (void)setAnimation:(GifAnimation *)animation
 {
     _animation = animation;
-    
-    self.imageView.animatedImage = animation.gifImage;
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:animation.imageURL]];
     [self updateAnimationLayerWithANimation:animation];
 }
 
-- (void)updateAnimationLayerWithANimation:(Animation *)animation
+- (void)updateAnimationLayerWithANimation:(GifAnimation *)animation
 {
     if (self.animationLayer) {
         [self.animationLayer removeFromSuperlayer];

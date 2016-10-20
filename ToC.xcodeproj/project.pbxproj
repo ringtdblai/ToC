@@ -44,6 +44,7 @@
 		F854ADA51DB8744C00054E53 /* NSManagedObject+RemoveAll.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADA41DB8744C00054E53 /* NSManagedObject+RemoveAll.m */; };
 		F854ADA91DB874A100054E53 /* Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADA81DB874A100054E53 /* Mapper.m */; };
 		F854ADAC1DB8751F00054E53 /* GifAnimation+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADAB1DB8751F00054E53 /* GifAnimation+Mapper.m */; };
+		F854ADB51DB8844C00054E53 /* SDImageCache+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
 		F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */; };
@@ -150,6 +151,8 @@
 		F854ADA81DB874A100054E53 /* Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mapper.m; sourceTree = "<group>"; };
 		F854ADAA1DB8751F00054E53 /* GifAnimation+Mapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GifAnimation+Mapper.h"; sourceTree = "<group>"; };
 		F854ADAB1DB8751F00054E53 /* GifAnimation+Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GifAnimation+Mapper.m"; sourceTree = "<group>"; };
+		F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDImageCache+Swizzle.m"; sourceTree = "<group>"; };
+		F854ADB41DB8844C00054E53 /* SDWebImage+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImage+Swizzle.h"; sourceTree = "<group>"; };
 		F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceViewController.h; sourceTree = "<group>"; };
 		F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceViewController.m; sourceTree = "<group>"; };
 		F888005D1DAF740E00DDD8DB /* AddFaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 		F88800791DAFA85900DDD8DB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F854ADB41DB8844C00054E53 /* SDWebImage+Swizzle.h */,
+				F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */,
 				F854ADA31DB8744C00054E53 /* NSManagedObject+RemoveAll.h */,
 				F854ADA41DB8744C00054E53 /* NSManagedObject+RemoveAll.m */,
 				F854AD901DB8714B00054E53 /* ArrayToDataTransformer.h */,
@@ -657,6 +662,7 @@
 				0932FB091DAE07F600F05D90 /* AppDelegate.m in Sources */,
 				F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */,
 				F854ADA91DB874A100054E53 /* Mapper.m in Sources */,
+				F854ADB51DB8844C00054E53 /* SDImageCache+Swizzle.m in Sources */,
 				F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */,
 				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
 				0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */,

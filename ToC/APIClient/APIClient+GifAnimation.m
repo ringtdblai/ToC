@@ -12,11 +12,11 @@
 
 - (RACSignal *)getListWithType:(NSString *)type
 {
-    NSDictionary *params = @{
-                             @"type": type,
-                             };
+//    NSDictionary *params = @{
+//                             @"type": type,
+//                             };
     
-    return [self rac_GET:API_ANIMATIONLIST_PATH parameters:params];
+    return [self rac_GET:API_ANIMATIONLIST_PATH parameters:nil];
 }
 
 @end

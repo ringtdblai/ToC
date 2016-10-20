@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "Animation.h"
+#import "GifAnimation+CoreDataClass.h"
 
 static NSString *squareAnimationCollectionViewCellIdentifier = @"squareAnimationCollectionViewCellIdentifier";
 
 @interface SquareAnimationCollectionViewCell : UICollectionViewCell
 
-- (void)updateWithAnimation:(Animation *)animation;
+- (void)updateWithAnimation:(GifAnimation *)animation;
 
 @end
