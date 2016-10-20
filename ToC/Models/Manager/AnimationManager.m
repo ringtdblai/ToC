@@ -83,7 +83,6 @@
 
 - (NSArray *)preprocessData:(id)origin
 {
-    NSLog(@"data:%@",origin);
     return origin;
 }
 

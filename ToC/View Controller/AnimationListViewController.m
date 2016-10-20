@@ -19,7 +19,7 @@
 // Model
 #import "FaceManager.h"
 #import "AnimationManager.h"
-#import "Animation+ExportGIF.h"
+#import "GifAnimation+ExportGIF.h"
 
 // View Controller
 #import "ShareViewController.h"
@@ -248,10 +248,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Animation *animation = self.animations[indexPath.row];
+    GifAnimation *animation = self.animations[indexPath.row];
 
     @weakify(self);
-    [animation exportGifWithCompletionHandler:^(NSURL *gifURL) {
+    
+    [[animation exportGIFSignal] subscribeNext:^(NSURL *gifURL) {
         @strongify(self);
         ShareViewController *vc = [ShareViewController new];
         vc.sharedImageURL = gifURL;
