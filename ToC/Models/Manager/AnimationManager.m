@@ -56,18 +56,20 @@
     
     RAC(self, cAnimations) = [[[[[GifAnimation findAll]
                            where:@"type == %@ OR type == %@"
-                           args:@[@"c", @"b"]]
+                           args:@[@"C", @"B"]]
                           sortBy:@"uniqueId"]
-                         fetchWithTrigger:trigger]map:^id(NSArray *x)
+                         fetchWithTrigger:trigger]
+                              map:^id(NSArray *x)
                         {
                             return x;
                         }];
     
     RAC(self, tAnimations) = [[[[[GifAnimation findAll]
                                  where:@"type == %@ OR type == %@"
-                                 args:@[@"t", @"b"]]
+                                 args:@[@"T", @"B"]]
                                 sortBy:@"uniqueId"]
-                               fetchWithTrigger:trigger]map:^id(NSArray *x)
+                               fetchWithTrigger:trigger]
+                              map:^id(NSArray *x)
                               {
                                   return x;
                               }];
@@ -81,6 +83,7 @@
 
 - (NSArray *)preprocessData:(id)origin
 {
+    NSLog(@"data:%@",origin);
     return origin;
 }
 

@@ -17,13 +17,13 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber)
             {
                 animation.uniqueId = data[@"_id"];
-                animation.type = data[@"type"];
+                animation.type = data[@"dataType"];
                 animation.imageURL = data[@"imageURL"];
                 animation.bounds = data[@"bounds"];
                 animation.position = data[@"position"];
                 animation.rotation = data[@"rotation"];
                 animation.width = [data[@"width"] integerValue];
-                animation.height = [data[@"width"] integerValue];
+                animation.height = [data[@"height"] integerValue];
                 animation.duration = [data[@"duration"] floatValue];
                 [subscriber sendNext:animation];
                 [subscriber sendCompleted];

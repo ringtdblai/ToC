@@ -60,6 +60,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[AnimationManager sharedManager] reload];
     [self.collectionView reloadData];
 }
 
