@@ -20,5 +20,8 @@
 @dynamic position;
 @dynamic rotation;
 @dynamic type;
+@dynamic width;
+@dynamic height;
+@dynamic duration;
 
 @end

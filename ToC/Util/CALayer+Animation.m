@@ -12,7 +12,7 @@
 
 @implementation CALayer (Animation)
 
-+ (instancetype)layerWithAnimation:(Animation *)animation
++ (instancetype)layerWithAnimation:(GifAnimation *)animation
                          scaleSize:(CGSize)scaleSize
 {
     CALayer *layer = [self layer];
@@ -23,9 +23,23 @@
         layer.contents = (__bridge id)(maskedImage.CGImage);
         layer.fillMode = kCAGravityResizeAspectFill;
         
-        CGSize animationSize = animation.gifImage.size;
+        CGSize animationSize = CGSizeMake(animation.width, animation.height);
         
-        [layer applyAnimationWithDictionary:animation.animationData
+        NSMutableDictionary *animationData = [[NSMutableDictionary alloc] init];
+        
+        if ([animation.rotation isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.rotation forKey:@"rotation"];
+        }
+        
+        if ([animation.position isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.position forKey:@"position"];
+        }
+        
+        if ([animation.bounds isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.bounds forKey:@"bounds"];
+        }
+        
+        [layer applyAnimationWithDictionary:animationData
                                    duration:animation.duration
                                      scaleX:scaleSize.width / animationSize.width
                                      scaleY:scaleSize.height / animationSize.height];

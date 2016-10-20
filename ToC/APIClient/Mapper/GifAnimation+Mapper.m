@@ -22,7 +22,9 @@
                 animation.bounds = data[@"bounds"];
                 animation.position = data[@"position"];
                 animation.rotation = data[@"rotation"];
-                
+                animation.width = [data[@"width"] integerValue];
+                animation.height = [data[@"width"] integerValue];
+                animation.duration = [data[@"duration"] floatValue];
                 [subscriber sendNext:animation];
                 [subscriber sendCompleted];
                 return nil;

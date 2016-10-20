@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSObject *position;
 @property (nullable, nonatomic, retain) NSObject *rotation;
 @property (nullable, nonatomic, copy) NSString *type;
+@property (nonatomic) int16_t width;
+@property (nonatomic) int16_t height;
+@property (nonatomic) float duration;
 
 @end
 
