@@ -14,8 +14,10 @@
 #import "KeyboardNotificationHelper.h"
 #import "ViewDecorator.h"
 #import "RACCommand+Extension.h"
+#import "UIButton+BackgroundColor.h"
 
 #import "APIClient+Email.h"
+#import "NSString+Email.h"
 
 @interface EmailViewController ()
 <
@@ -165,12 +167,15 @@
     
     UIColor *defaultColor = [UIColor colorWithRed:0.467 green:0.663 blue:0.933 alpha:1.000];
     
-//    UIColor *disabledColor = [UIColor colorWithWhite:0.000 alpha:0.300];
+    UIColor *disabledColor = [UIColor colorWithWhite:0.000 alpha:0.300];
     
-    [getStartedButton setBackgroundColor:defaultColor];
+    [getStartedButton setBackgroundColor:defaultColor forState:UIControlStateNormal];
+    [getStartedButton setBackgroundColor:disabledColor forState:UIControlStateDisabled];
     
     [getStartedButton setTitle:NSLocalizedString(@"Get Started", nil)
                       forState:UIControlStateNormal];
+    [getStartedButton setTitle:NSLocalizedString(@"Email Please!", nil)
+                      forState:UIControlStateDisabled];
     [getStartedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     getStartedButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
@@ -220,7 +225,7 @@
 - (RACSignal *)textFieldSignal
 {
     return [self.nameTextField.rac_textSignal map:^id(NSString *text) {
-        return @((text.length > 0));
+        return @((text.length > 0) && [text isValidEmail]);
     }];
 }
 

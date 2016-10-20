@@ -351,7 +351,7 @@
         
         MFMessageComposeViewController *messageComposer =
         [[MFMessageComposeViewController alloc] init];
-        NSString *message = [NSString stringWithFormat:@"%@", NSLocalizedString(@"Share Pet Intro", nil)];
+        NSString *message = [NSString stringWithFormat:@"%@", @"Sent from Election 2016 - Vote with pet"];
         [messageComposer setBody:message];
         messageComposer.messageComposeDelegate = self;
         if ([MFMessageComposeViewController canSendAttachments]) {
@@ -369,7 +369,7 @@
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Share Pet Intro", nil)]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@", @"Sent from Election 2016 - Vote with pet"]];
         [tweetSheet addImage:[UIImage animatedImageWithAnimatedGIFURL:self.sharedImageURL]];
         [tweetSheet addURL:self.sharedImageURL];
         
@@ -389,8 +389,8 @@
         
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        [controller setSubject:NSLocalizedString(@"Share Pet Subject",nil)];
-        [controller setMessageBody:[NSString stringWithFormat:@"%@", NSLocalizedString(@"Share Pet Intro", nil)]
+        [controller setSubject:@"Vote for America"];
+        [controller setMessageBody:[NSString stringWithFormat:@"%@",@"Sent from Election 2016 - Vote with pet"]
                             isHTML:YES];
         [controller addAttachmentData:[NSData dataWithContentsOfURL:self.sharedImageURL]
                              mimeType:@"image/gif"
@@ -643,6 +643,7 @@
     if (result == MFMailComposeResultSent) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -651,6 +652,7 @@
     if (result == MessageComposeResultSent) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)clickClose

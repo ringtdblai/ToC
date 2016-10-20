@@ -49,6 +49,8 @@
 		F854ADAC1DB8751F00054E53 /* GifAnimation+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADAB1DB8751F00054E53 /* GifAnimation+Mapper.m */; };
 		F854ADB51DB8844C00054E53 /* SDImageCache+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */; };
 		F854ADBD1DB8D9E200054E53 /* APIClient+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADBC1DB8D9E200054E53 /* APIClient+Email.m */; };
+		F854ADC01DB9091900054E53 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADBF1DB9091900054E53 /* NSString+Email.m */; };
+		F854ADC31DB9096800054E53 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADC21DB9096800054E53 /* UIButton+BackgroundColor.m */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
 		F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */; };
@@ -165,6 +167,10 @@
 		F854ADB41DB8844C00054E53 /* SDWebImage+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImage+Swizzle.h"; sourceTree = "<group>"; };
 		F854ADBB1DB8D9E200054E53 /* APIClient+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APIClient+Email.h"; sourceTree = "<group>"; };
 		F854ADBC1DB8D9E200054E53 /* APIClient+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APIClient+Email.m"; sourceTree = "<group>"; };
+		F854ADBE1DB9091900054E53 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
+		F854ADBF1DB9091900054E53 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
+		F854ADC11DB9096800054E53 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
+		F854ADC21DB9096800054E53 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceViewController.h; sourceTree = "<group>"; };
 		F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceViewController.m; sourceTree = "<group>"; };
 		F888005D1DAF740E00DDD8DB /* AddFaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -471,6 +477,10 @@
 		F88800791DAFA85900DDD8DB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F854ADC11DB9096800054E53 /* UIButton+BackgroundColor.h */,
+				F854ADC21DB9096800054E53 /* UIButton+BackgroundColor.m */,
+				F854ADBE1DB9091900054E53 /* NSString+Email.h */,
+				F854ADBF1DB9091900054E53 /* NSString+Email.m */,
 				F854ADB41DB8844C00054E53 /* SDWebImage+Swizzle.h */,
 				F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */,
 				F854ADA31DB8744C00054E53 /* NSManagedObject+RemoveAll.h */,
@@ -561,7 +571,7 @@
 				TargetAttributes = {
 					0932FB001DAE07F600F05D90 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4V2C8JW73Y;
+						DevelopmentTeam = 64ZLT48G98;
 						ProvisioningStyle = Manual;
 					};
 					0932FB1C1DAE07F600F05D90 = {
@@ -702,6 +712,7 @@
 				0932FC7F1DB0BEB900F05D90 /* CALayer+Animation.m in Sources */,
 				09D2237F1DB7580B0072AEC6 /* TextStyles.m in Sources */,
 				F888006C1DAF9F0E00DDD8DB /* AnchorUIMaker.m in Sources */,
+				F854ADC31DB9096800054E53 /* UIButton+BackgroundColor.m in Sources */,
 				F88800721DAFA22400DDD8DB /* RACSignal+Extension.m in Sources */,
 				099D09791DB4CD770084208A /* ShareCollectionViewCell.m in Sources */,
 				F854ADA51DB8744C00054E53 /* NSManagedObject+RemoveAll.m in Sources */,
@@ -717,6 +728,7 @@
 				0932FB441DAE364400F05D90 /* ExportViewController.m in Sources */,
 				F854AD8E1DB870B900054E53 /* GifAnimation+CoreDataClass.m in Sources */,
 				09D223851DB883B80072AEC6 /* NSArray+Immutable.m in Sources */,
+				F854ADC01DB9091900054E53 /* NSString+Email.m in Sources */,
 				0932FC881DB0DB3200F05D90 /* UIImage+Mask.m in Sources */,
 				F88800751DAFA37D00DDD8DB /* AlertView.m in Sources */,
 				F88800711DAFA22400DDD8DB /* RACCommand+Extension.m in Sources */,
@@ -857,16 +869,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 4V2C8JW73Y;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 64ZLT48G98;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ToC/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobiusbobs.tocapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9762c2ee-23be-422c-8714-ae18d3096fa8";
-				PROVISIONING_PROFILE_SPECIFIER = ToC_Distribution;
+				PROVISIONING_PROFILE = "7b791f8f-51a1-4902-be6a-afa94354e81f";
+				PROVISIONING_PROFILE_SPECIFIER = wildcard;
 			};
 			name = Debug;
 		};

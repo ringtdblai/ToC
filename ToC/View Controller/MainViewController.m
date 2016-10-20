@@ -37,6 +37,8 @@
 
 
 @property (nonatomic, weak) UIView *containerView;
+
+@property (nonatomic, weak) UIImageView *animalsImage;
 @property (nonatomic, weak) UIImageView *imageView;
 @property (nonatomic, weak) UILabel *countLabel;
 @property (nonatomic, weak) UILabel *percentageLabel;
@@ -91,6 +93,11 @@
 {
     self.title = @"Vote Wtih Pet";
     
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self
+                                                                                 action:@selector(shareAction:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
     UIColor *tintColor = [UIColor blackColor];
     
     NSDictionary *dict = @{NSFontAttributeName:[UIFont fontWithName:@"Menlo-Regular" size:18],
@@ -104,6 +111,8 @@
     [self setupBanner];
     [self setupButtonView];
     [self setupContainerView];
+    [self.view bringSubviewToFront:self.trumpPlusLabel];
+    [self.view bringSubviewToFront:self.clintonPlusLabel];
     
 }
 
@@ -257,7 +266,7 @@
 - (void)setupContainerView
 {
     UIView *containerView = [UIView new];
-    
+    containerView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:containerView];
     
     [containerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -269,9 +278,11 @@
     self.containerView = containerView;
     
     [self setupTopLine];
+    
     [self setupImageView];
     [self setupPercentageLabel];
     [self setupCountLabel];
+    [self setupAnimalsImage];
     [self setupNameLabel];
     [self setupTotalCountLabel];
 }
@@ -289,6 +300,21 @@
     }];
 }
 
+- (void)setupAnimalsImage
+{
+    UIImageView *animalsImageView = [UIImageView new];
+    animalsImageView.image = [UIImage imageNamed:@"animals"];
+    [self.containerView addSubview:animalsImageView];
+    
+    [animalsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.containerView);
+        make.bottom.equalTo(self.countLabel.mas_top).with.offset(-5);
+        make.height.equalTo(self.containerView.mas_width).dividedBy(1150.0f/280.0f);
+    }];
+    
+    self.animalsImage = animalsImageView;
+}
+
 - (void)setupImageView
 {
     UIImageView *imageView = [UIImageView new];
@@ -301,7 +327,8 @@
     [self.containerView addSubview:imageView];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.containerView);
+        make.centerX.equalTo(self.containerView);
+        make.centerY.equalTo(self.containerView).with.offset(50);
         make.width.equalTo(self.containerView);
         make.height.equalTo(imageView.mas_width).multipliedBy(ratio);
     }];
@@ -371,6 +398,7 @@
 {
     NSString *countString = [NSString stringWithFormat:@"%ld  :  %ld\n",
                              clintonCount, trumpCount];
+    
     
     return countString;
 }
@@ -586,6 +614,34 @@
     
     [self.clintonPlusLabel pop_addAnimation:anim2 forKey:@"fadeout"];
 }
+
+-(void)shareAction:(id)sender
+{
+    // grab an item we want to share
+    UIImage *image = [self imageWithView:self.containerView];
+    NSArray *items = @[image];
+    
+    // build an activity view controller
+    UIActivityViewController *controller = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+    
+    // and present it
+    [self presentViewController:controller animated:YES completion:^{
+        // executes after the user selects something
+    }];
+}
+
+- (UIImage *) imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
+}
+
 
 
 @end
