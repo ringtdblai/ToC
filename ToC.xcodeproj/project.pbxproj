@@ -34,6 +34,7 @@
 		09D223821DB782A50072AEC6 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D223811DB782A50072AEC6 /* UIImage+Color.m */; };
 		09D223851DB883B80072AEC6 /* NSArray+Immutable.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D223841DB883B80072AEC6 /* NSArray+Immutable.m */; };
 		09D2238B1DB8A3490072AEC6 /* GifAnimation+ExportGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2238A1DB8A3490072AEC6 /* GifAnimation+ExportGIF.m */; };
+		09D2238E1DB8D0020072AEC6 /* APIClient+Vote.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D2238D1DB8D0020072AEC6 /* APIClient+Vote.m */; };
 		108BBAFA14D33B215F7F7996 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8362AA6F80E605D18FE529F2 /* libPods.a */; };
 		F854AC8A1DB7551900054E53 /* BothAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = F854AC891DB7551900054E53 /* BothAnimation.plist */; };
 		F854AD881DB790C000054E53 /* TAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = F854AD871DB790C000054E53 /* TAnimation.plist */; };
@@ -134,6 +135,8 @@
 		09D223841DB883B80072AEC6 /* NSArray+Immutable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Immutable.m"; sourceTree = "<group>"; };
 		09D223891DB8A3490072AEC6 /* GifAnimation+ExportGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GifAnimation+ExportGIF.h"; sourceTree = "<group>"; };
 		09D2238A1DB8A3490072AEC6 /* GifAnimation+ExportGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GifAnimation+ExportGIF.m"; sourceTree = "<group>"; };
+		09D2238C1DB8D0020072AEC6 /* APIClient+Vote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APIClient+Vote.h"; sourceTree = "<group>"; };
+		09D2238D1DB8D0020072AEC6 /* APIClient+Vote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APIClient+Vote.m"; sourceTree = "<group>"; };
 		2E8FFE4C5832321A1DD23BDE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		81B7EFB848522241336BF3FD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8362AA6F80E605D18FE529F2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -423,6 +426,8 @@
 				F854AD951DB871DF00054E53 /* APIClient.m */,
 				F854AD9A1DB8728000054E53 /* APIClient+GifAnimation.h */,
 				F854AD9B1DB8728000054E53 /* APIClient+GifAnimation.m */,
+				09D2238C1DB8D0020072AEC6 /* APIClient+Vote.h */,
+				09D2238D1DB8D0020072AEC6 /* APIClient+Vote.m */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				F88800781DAFA72000DDD8DB /* EmailViewController.m in Sources */,
 				F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */,
 				09D2238B1DB8A3490072AEC6 /* GifAnimation+ExportGIF.m in Sources */,
+				09D2238E1DB8D0020072AEC6 /* APIClient+Vote.m in Sources */,
 				0932FC821DB0CE1E00F05D90 /* AnimationView.m in Sources */,
 				0932FB121DAE07F600F05D90 /* ToC.xcdatamodeld in Sources */,
 				F88800691DAF98BE00DDD8DB /* LoginViewController.m in Sources */,

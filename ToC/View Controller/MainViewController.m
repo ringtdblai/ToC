@@ -24,11 +24,16 @@
 
 // Model
 #import "FaceManager.h"
+#import "APIClient+Vote.h"
 
 @interface MainViewController ()
 <
     SDCycleScrollViewDelegate
 >
+
+@property (nonatomic, assign) NSUInteger clintonCount;
+@property (nonatomic, assign) NSUInteger trumpCount;
+
 
 @property (nonatomic, weak) UIView *containerView;
 @property (nonatomic, weak) UIImageView *imageView;
@@ -53,6 +58,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self constructView];
+    [self bindData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +66,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    @weakify(self);
+    [[[APIClient sharedClient] getCurrentVoteCount]
+     subscribeNext:^(RACTuple *tuple) {
+         @strongify(self);
+         NSDictionary *dict = tuple.first;
+         self.clintonCount = [dict[@"voteInfo"][@"C"] unsignedIntegerValue];
+         self.trumpCount = [dict[@"voteInfo"][@"T"] unsignedIntegerValue];
+    }];
+}
+
 #pragma mark - Setup UI
 
 - (void)constructView
@@ -252,9 +273,13 @@
 {
     UILabel *label = [UILabel new];
         label.textColor = [TextStyles currentStateTitleColor];
-    label.text = @"52％：48％";
-    label.font = [UIFont fontWithName:@"Palatino-Bold"
-                                 size:26];
+//    label.text = @"0％：0％\n0 : 0";
+//    label.font = [UIFont fontWithName:@"Palatino-Bold"
+//                                 size:26];
+    label.attributedText = [self titleWithClintonCount:0 TrumpCount:0];
+    
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentCenter;
     
     [self.containerView addSubview:label];
     
@@ -265,6 +290,43 @@
     
     self.currentStateLabel = label;
 }
+
+- (NSAttributedString *)titleWithClintonCount:(NSUInteger)clintonCount
+                                   TrumpCount:(NSUInteger)trumpCount
+{
+    CGFloat totalCount = clintonCount + trumpCount;
+    
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [style setAlignment:NSTextAlignmentCenter];
+    [style setLineBreakMode:NSLineBreakByWordWrapping];
+    [style setLineSpacing:20];
+    
+    UIFont *font1 = [UIFont fontWithName:@"Palatino-Bold" size:26.0f];
+    UIFont *font2 = [UIFont fontWithName:@"Palatino-Bold"  size:20.0f];
+    
+    UIColor *color = [TextStyles currentStateTitleColor];
+    
+    NSDictionary *dict1 = @{NSFontAttributeName:font1,
+                            NSParagraphStyleAttributeName:style,
+                            NSForegroundColorAttributeName : color};
+    NSDictionary *dict2 = @{NSFontAttributeName:font2,
+                            NSParagraphStyleAttributeName:style,
+                            NSForegroundColorAttributeName : color};
+    
+    NSString *countString = [NSString stringWithFormat:@"%ld : %ld\n",
+                               clintonCount, trumpCount];
+    NSString *percentString = [NSString stringWithFormat:@"%.0f%% : %.0f%%",
+                             totalCount > 0 ? clintonCount / totalCount : 0,
+                             totalCount > 0 ? trumpCount / totalCount : 0];
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:countString
+                                                                      attributes:dict1]];
+    [attString appendAttributedString:[[NSAttributedString alloc] initWithString:percentString
+                                                                      attributes:dict2]];
+    
+    return attString;
+}
+
 
 - (void)setupNameLabel
 {
@@ -298,7 +360,7 @@
     UILabel *label = [UILabel new];
     
     label.textColor = [TextStyles currentStateTitleColor];
-    label.attributedText = [self titleWithCount:250000];
+    label.attributedText = [self titleWithCount:0];
     label.numberOfLines = 0;
     
     [view addSubview:label];
@@ -310,7 +372,7 @@
     self.totalCountLabel = label;
 }
 
-- (NSAttributedString *)titleWithCount:(NSUInteger)count
+- (NSAttributedString *)titleWithCount:(CGFloat)count
 {
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSTextAlignmentCenter];
@@ -329,7 +391,7 @@
                             NSParagraphStyleAttributeName:style,
                             NSForegroundColorAttributeName : color2};
     
-    NSString *countString = [NSString stringWithFormat:@"%ld%@", count > 1000 ? count/1000 : count,
+    NSString *countString = [NSString stringWithFormat:@"%.0f%@", count > 1000 ? count/1000 : count,
                                                                  count > 1000 ? @"k" : @""];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
     [attString appendAttributedString:[[NSAttributedString alloc] initWithString:countString
@@ -340,16 +402,48 @@
     return attString;
 }
 
+#pragma mark - Binding
+- (void)bindData
+{
+    RACSignal *clintonSignal = [[RACObserve(self, clintonCount) ignore:nil] distinctUntilChanged];
+
+    RACSignal *trumpSignal = [[RACObserve(self, trumpCount) ignore:nil] distinctUntilChanged];
+    
+    @weakify(self);
+    [[RACSignal combineLatest:@[clintonSignal, trumpSignal]]
+     subscribeNext:^(RACTuple *tuple) {
+         @strongify(self);
+         NSUInteger clintonCount = [tuple.first unsignedIntegerValue];
+         NSUInteger trumpCount = [tuple.second unsignedIntegerValue];
+         CGFloat totalCount = clintonCount + trumpCount;
+         
+         if (totalCount > 0) {
+             self.currentStateLabel.attributedText = [self titleWithClintonCount:clintonCount
+                                                                      TrumpCount:trumpCount];
+             self.totalCountLabel.attributedText = [self titleWithCount:totalCount];
+         }
+    }];
+}
+
 #pragma mark - Button Action
 
 - (void)navigateWithType:(id)sender
 {
     UIButton *button = (UIButton *) sender;
-    AnimationListViewController *vc = [AnimationListViewController new];
-    vc.type = button.tag;
     
-    [self.navigationController pushViewController:vc
-                                         animated:YES];
+    NSString *name = (button.tag == 0) ? @"C" : @"T";
+    
+    @weakify(self);
+    [[[APIClient sharedClient] voteFor:name]
+     subscribeNext:^(id x) {
+         @strongify(self);
+         AnimationListViewController *vc = [AnimationListViewController new];
+         vc.type = button.tag;
+         
+         [self.navigationController pushViewController:vc
+                                              animated:YES];
+
+     }];
 }
 
 
