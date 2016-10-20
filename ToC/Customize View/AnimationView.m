@@ -64,7 +64,7 @@
 - (void)setAnimation:(GifAnimation *)animation
 {
     _animation = animation;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:animation.imageURL]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:animation.imageURL] placeholderImage:[UIImage imageNamed:@"loading"]];
     [self updateAnimationLayerWithANimation:animation];
 }
 
