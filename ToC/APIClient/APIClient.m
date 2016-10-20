@@ -15,7 +15,7 @@
     static APIClient *client = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-         client = [[APIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://220.133.97.51:20163"]];
+         client = [[APIClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://54.153.64.211"]];
     });
     
     return client;
