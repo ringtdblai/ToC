@@ -16,7 +16,7 @@
 //                             @"type": type,
 //                             };
     
-    return [[self rac_GET:API_ANIMATIONLIST_PATH parameters:nil] logAll];
+    return [self rac_GET:API_ANIMATIONLIST_PATH parameters:nil];
 }
 
 @end

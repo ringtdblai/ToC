@@ -242,7 +242,7 @@
     SquareAnimationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier
                                                                            forIndexPath:indexPath];
     
-    Animation *animation = self.animations[indexPath.row];
+    GifAnimation *animation = self.animations[indexPath.row];
     [cell updateWithAnimation:animation];
     
     return cell;
