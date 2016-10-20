@@ -571,7 +571,7 @@
 				TargetAttributes = {
 					0932FB001DAE07F600F05D90 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 64ZLT48G98;
+						DevelopmentTeam = 4V2C8JW73Y;
 						ProvisioningStyle = Manual;
 					};
 					0932FB1C1DAE07F600F05D90 = {
@@ -879,6 +879,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7b791f8f-51a1-4902-be6a-afa94354e81f";
 				PROVISIONING_PROFILE_SPECIFIER = wildcard;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -898,6 +899,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9762c2ee-23be-422c-8714-ae18d3096fa8";
 				PROVISIONING_PROFILE_SPECIFIER = ToC_Distribution;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
