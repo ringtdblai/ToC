@@ -8,7 +8,7 @@
 
 #import "APIClient.h"
 
-#define API_ANIMATIONLIST_PATH @"/api/v1/list"
+#define API_ANIMATIONLIST_PATH @"/tocUnderPamily/gifs"
 
 @interface APIClient (GifAnimation)
 
