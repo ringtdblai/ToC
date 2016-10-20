@@ -154,7 +154,7 @@
     
     
     [clintonButton addTarget:self
-                      action:@selector(showClintonPlusAnimation)
+                      action:@selector(navigateWithType:)
             forControlEvents:UIControlEventTouchUpInside];
     
     [self.buttonView addSubview:clintonButton];
@@ -194,7 +194,7 @@
     [trumpButton setBackgroundColor:[TextStyles trumpTintColor]];
     
     [trumpButton addTarget:self
-                      action:@selector(showTrumpPlusAnimation)
+                      action:@selector(navigateWithType:)
             forControlEvents:UIControlEventTouchUpInside];
 
     
@@ -497,11 +497,11 @@
          NSDictionary *dict = tuple.first;
          [self updateCurrentStateWith:dict[@"voteInfo"]];
          
-         AnimationListViewController *vc = [AnimationListViewController new];
-         vc.type = button.tag;
-         
-         [self.navigationController pushViewController:vc
-                                              animated:YES];
+         if ([name isEqualToString:@"C"]) {
+             [self showClintonPlusAnimation];
+         } else {
+             [self showTrumpPlusAnimation];
+         }
 
      }];
 }
