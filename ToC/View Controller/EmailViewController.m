@@ -104,17 +104,14 @@
 - (void)setupImageIcon
 {
     UIImageView *iconImageView = [UIImageView new];
+    iconImageView.image = [UIImage imageNamed:@"email"];
     [self.contentView addSubview:iconImageView];
     
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView);
-        make.width.height.equalTo(@136);
+        make.width.height.equalTo(self.contentView.mas_width);
         make.centerX.equalTo(self.contentView);
     }];
-    iconImageView.layer.cornerRadius = 68;
-    iconImageView.clipsToBounds = YES;
-    iconImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    iconImageView.layer.borderWidth = 10;
     
     self.iconImageView = iconImageView;
     
@@ -137,7 +134,8 @@
     
     [nameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.iconImageView.mas_bottom).with.offset(45);
-        make.width.equalTo(@247);
+        make.left.equalTo(self.contentView);
+        make.right.equalTo(self.contentView).with.offset(-25);
         make.height.equalTo(@45);
         make.centerX.equalTo(self.contentView);
     }];

@@ -10,4 +10,6 @@
 
 @interface AddFaceViewController : UIViewController
 
+@property (nonatomic, strong) NSString *type;
+
 @end

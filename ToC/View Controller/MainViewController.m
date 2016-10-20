@@ -64,7 +64,7 @@
 
 - (void)constructView
 {
-    self.title = @"T or C";
+    self.title = @"Vote Wtih Pet";
     
     UIColor *tintColor = [UIColor blackColor];
     

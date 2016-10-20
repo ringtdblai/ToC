@@ -55,7 +55,12 @@
 - (void)constructViews
 {
     // close button
-    self.view.backgroundColor = [UIColor colorWithRed:119.0f/255.0f green:169.0f/255.0f blue:238.0f/255.0f alpha:1.0f];
+    if ([self.type isEqualToString:@"redMask"]) {
+         self.view.backgroundColor = [UIColor colorWithRed:236.0f/255.0f green:12.0f/255.0f blue:72.0f/255.0f alpha:1.0f];
+    } else {
+        self.view.backgroundColor = [UIColor colorWithRed:28.0f/255.0f green:155.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+    }
+    
     NSInteger numberOfColumns = 3;
     CGFloat itemWidth = floorf(CGRectGetWidth(self.view.frame) / numberOfColumns) - 2;
     self.cellSize = CGSizeMake(itemWidth, itemWidth);
@@ -90,7 +95,7 @@
        forCellWithReuseIdentifier:faceCollectionViewCellIdentifier];
     
     collectionView.showsHorizontalScrollIndicator = NO;
-    collectionView.backgroundColor = [UIColor colorWithRed:119.0f/255.0f green:169.0f/255.0f blue:238.0f/255.0f alpha:1.0f];
+    collectionView.backgroundColor = self.view.backgroundColor;
     collectionView.dataSource = self;
     collectionView.delegate = self;
     
@@ -150,7 +155,7 @@
 {
     if (indexPath.row == 0) {
         TGCameraNavigationController *navigationController =
-        [TGCameraNavigationController newWithCameraDelegate:self andDefaultMask:@"redMask"];
+        [TGCameraNavigationController newWithCameraDelegate:self andDefaultMask:self.type];
         
         [self presentViewController:navigationController animated:YES completion:nil];
     } else {

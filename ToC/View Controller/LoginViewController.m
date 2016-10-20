@@ -44,7 +44,7 @@
 - (void)constructViews
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.title = @"Vote With Pet";
     [self setupContainerView];
     [self setupIconImageView];
     [self setupTitleLabel];
@@ -70,14 +70,14 @@
 - (void)setupIconImageView
 {
     UIImageView *iconImageView = [UIImageView new];
-    [iconImageView setImage:[UIImage imageNamed:@"AddFace"]];
-    [self.containerView addSubview:iconImageView];
+    [iconImageView setImage:[UIImage imageNamed:@"trumpVSclinton"]];
+    [self.view addSubview:iconImageView];
     
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.containerView);
         make.centerX.equalTo(self.view);
-        make.width.equalTo(@113);
-        make.height.equalTo(@58);
+        make.width.equalTo(self.view);
+        make.height.equalTo(self.view.mas_width).dividedBy(667.0f/342.0f);
     }];
     
     self.iconImageView = iconImageView;

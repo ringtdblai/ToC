@@ -144,8 +144,6 @@
 
 - (void)setupAddFaceButton
 {
-    
-    
     UIImageView *imageView = [UIImageView new];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
@@ -267,6 +265,11 @@
 - (void)showAddFaceVC
 {
     AddFaceViewController *vc = [AddFaceViewController new];
+    if (self.type == AnimationTypeTrump) {
+        vc.type = @"redMask";
+    }else{
+        vc.type = @"blueMask";
+    }
     [self presentViewController:vc animated:YES completion:^{
         
     }];
