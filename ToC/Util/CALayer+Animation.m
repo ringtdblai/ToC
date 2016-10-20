@@ -137,7 +137,7 @@
     frameAnim.calculationMode = kCAAnimationDiscrete;
 
     alphaAnim.values = alphaValues;
-    frameAnim.calculationMode = kCAAnimationDiscrete;
+    alphaAnim.calculationMode = kCAAnimationDiscrete;
 
     group.animations = @[frameAnim, alphaAnim];
     
