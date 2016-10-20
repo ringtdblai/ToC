@@ -12,7 +12,7 @@
 
 @implementation CALayer (Animation)
 
-+ (instancetype)layerWithAnimation:(Animation *)animation
++ (instancetype)layerWithAnimation:(GifAnimation *)animation
                          scaleSize:(CGSize)scaleSize
 {
     CALayer *layer = [self layer];
@@ -23,12 +23,26 @@
         layer.contents = (__bridge id)(maskedImage.CGImage);
         layer.fillMode = kCAGravityResizeAspectFill;
         
-        CGSize animationSize = animation.gifImage.size;
+        CGSize animationSize = CGSizeMake(animation.width, animation.height);
         
-        [layer applyAnimationWithDictionary:animation.animationData
+        NSMutableDictionary *animationData = [[NSMutableDictionary alloc] init];
+        
+        if ([animation.rotation isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.rotation forKey:@"rotation"];
+        }
+        
+        if ([animation.position isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.position forKey:@"position"];
+        }
+        
+        if ([animation.bounds isKindOfClass:[NSArray class]]) {
+            [animationData setObject:animation.bounds forKey:@"bounds"];
+        }
+        
+        [layer applyAnimationWithDictionary:animationData
                                    duration:animation.duration
-                                     scaleX:scaleSize.width / animationSize.width
-                                     scaleY:scaleSize.height / animationSize.height];
+                                     scaleSize:scaleSize
+                              animationSize:animationSize];
     }
     
     return layer;
@@ -36,19 +50,24 @@
 
 - (void)applyAnimationWithDictionary:(NSDictionary *)dict
                             duration:(NSTimeInterval)duration
-                              scaleX:(CGFloat)scaleX
-                              scaleY:(CGFloat)scaleY
+                           scaleSize:(CGSize)scaleSize
+                       animationSize:(CGSize)animationSize
 {
+    CGFloat scaleX = scaleSize.width / animationSize.width;
+    CGFloat scaleY = scaleSize.height / animationSize.height;
+    
     CAAnimationGroup* group = [CAAnimationGroup animation];
     
     NSMutableArray *animations = [NSMutableArray array];
     
     for (NSString *key in [dict allKeys]) {
         CAKeyframeAnimation *animation;
+        CAAnimationGroup *group;
         if ([key isEqualToString:@"position"]) {
-             animation = [self positionAnimationValues:dict[key]
+             group = [self positionAnimationValues:dict[key]
                                                 scaleX:scaleX
-                                                scaleY:scaleY];
+                                                scaleY:scaleY
+                                         animationSize:animationSize];
         } else if ([key isEqualToString:@"bounds"]){
             animation = [self boundsAnimationValues:dict[key]
                                              scaleX:scaleX
@@ -63,6 +82,10 @@
         if (animation) {
             [animations addObject:animation];
         }
+        
+        if (group) {
+            [animations addObject:group];
+        }
     }
     
     group.animations = animations;
@@ -76,58 +99,50 @@
     [self addAnimation:group forKey:@"group"];
 }
 
-- (CAKeyframeAnimation *)positionAnimationValues:(NSArray *)array
-                                          scaleX:(CGFloat)scaleX
-                                          scaleY:(CGFloat)scaleY
+- (CAAnimationGroup *)positionAnimationValues:(NSArray *)array
+                                       scaleX:(CGFloat)scaleX
+                                       scaleY:(CGFloat)scaleY
+                                animationSize:(CGSize)animationSize
 {
     if (![array isKindOfClass:[NSArray class]]) {
         return nil;
     }
     
-    CAKeyframeAnimation* frameAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CAAnimationGroup* group = [CAAnimationGroup animation];
+
     
-    NSMutableArray *values = [NSMutableArray array];
+    CAKeyframeAnimation* frameAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CAKeyframeAnimation* alphaAnim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+
+    NSMutableArray *frameValues = [NSMutableArray array];
+    NSMutableArray *alphaValues = [NSMutableArray array];
+
+    CGPoint lastPoint = CGPointMake(1000, 1000);
     
     for (NSString *string in array) {
         CGPoint point = CGPointFromString(string);
-        CGPoint scalePoint = CGPointMake(point.x * scaleX, point.y * scaleY);
         
-        [values addObject:[NSValue valueWithCGPoint:scalePoint]];
+        if (point.x <= animationSize.width && point.y <= animationSize.height) {
+            CGPoint scalePoint = CGPointMake(point.x * scaleX, point.y * scaleY);
+            [frameValues addObject:[NSValue valueWithCGPoint:scalePoint]];
+            [alphaValues addObject:@1];
+            lastPoint = point;
+        } else {
+            [frameValues addObject:[NSValue valueWithCGPoint:lastPoint]];
+            [alphaValues addObject:@0];
+        }
     }
     
-    frameAnim.values = values;
-    frameAnim.calculationMode = kCAAnimationLinear;
+    frameAnim.values = frameValues;
+    frameAnim.calculationMode = kCAAnimationDiscrete;
 
+    alphaAnim.values = alphaValues;
+    alphaAnim.calculationMode = kCAAnimationDiscrete;
+
+    group.animations = @[frameAnim, alphaAnim];
     
-    return frameAnim;
+    return group;
 }
-
-//- (CAKeyframeAnimation *)positionAnimationValues:(NSArray *)array
-//{
-//    if (![array isKindOfClass:[NSArray class]]) {
-//        return nil;
-//    }
-//    
-//    CAKeyframeAnimation* frameAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-//    
-//    
-//    
-//    
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    
-//    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        CGPoint point = CGPointFromString(obj);
-//        if (idx == 0) {
-//            CGPathMoveToPoint(path,NULL,point.x,point.y);
-//        } else {
-//            CGPathAddLineToPoint(path,NULL,point.x,point.y);
-//        }
-//    }];
-//    
-//    frameAnim.path = path;
-//    
-//    return frameAnim;
-//}
 
 - (CAKeyframeAnimation *)boundsAnimationValues:(NSArray *)array
                                         scaleX:(CGFloat)scaleX

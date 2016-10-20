@@ -19,7 +19,7 @@
 // Model
 #import "FaceManager.h"
 #import "AnimationManager.h"
-#import "Animation+ExportGIF.h"
+#import "GifAnimation+ExportGIF.h"
 
 // View Controller
 #import "ShareViewController.h"
@@ -60,6 +60,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[AnimationManager sharedManager] reload];
     [self.collectionView reloadData];
 }
 
@@ -142,8 +144,6 @@
 
 - (void)setupAddFaceButton
 {
-    
-    
     UIImageView *imageView = [UIImageView new];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageView];
@@ -226,7 +226,7 @@
         [self.collectionView reloadData];
     }];
     
-    RAC(self.faceImageView, image) = RACObserve([FaceManager sharedManager], maskedImage);
+    RAC(self.faceImageView, image) = [RACObserve([FaceManager sharedManager], maskedImage) ignore:nil];
 }
 
 #pragma mark - UICollectionView Delegate
@@ -240,7 +240,7 @@
     SquareAnimationCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:squareAnimationCollectionViewCellIdentifier
                                                                            forIndexPath:indexPath];
     
-    Animation *animation = self.animations[indexPath.row];
+    GifAnimation *animation = self.animations[indexPath.row];
     [cell updateWithAnimation:animation];
     
     return cell;
@@ -248,10 +248,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Animation *animation = self.animations[indexPath.row];
+    GifAnimation *animation = self.animations[indexPath.row];
 
     @weakify(self);
-    [animation exportGifWithCompletionHandler:^(NSURL *gifURL) {
+    
+    [[animation exportGIFSignal] subscribeNext:^(NSURL *gifURL) {
         @strongify(self);
         ShareViewController *vc = [ShareViewController new];
         vc.sharedImageURL = gifURL;
@@ -265,6 +266,11 @@
 - (void)showAddFaceVC
 {
     AddFaceViewController *vc = [AddFaceViewController new];
+    if (self.type == AnimationTypeTrump) {
+        vc.type = @"redMask";
+    }else{
+        vc.type = @"blueMask";
+    }
     [self presentViewController:vc animated:YES completion:^{
         
     }];

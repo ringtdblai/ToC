@@ -49,7 +49,7 @@
 #pragma mark - Binding
 - (void)bindData
 {
-    RAC(self, selectedFace) = [[[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:@"selectedFace"]
+    RAC(self, selectedFace) = [[[[[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:@"selectedFace"] ignore:nil]
                                 distinctUntilChanged]
                                map:^id(NSString *name) {
                                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -57,7 +57,7 @@
                                    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",name]];
                                    
                                    return [UIImage imageWithContentsOfFile:imagePath];
-                               }];
+                               }] startWith:[UIImage imageNamed:@"facePlaceHolder"]];
     
     RAC(self, faces) = [[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:@"photos"]
                         distinctUntilChanged];

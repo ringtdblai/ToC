@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "Animation.h"
+#import "GifAnimation+CoreDataClass.h"
 
 @interface AnimationView : UIView
 
-@property (nonatomic, strong) Animation *animation;
+@property (nonatomic, strong) GifAnimation *animation;
 
 @end

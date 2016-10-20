@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseManager.h"
 
-@interface AnimationManager : NSObject
+@interface AnimationManager : BaseManager
 
 @property (nonatomic, strong, readonly) NSArray *cAnimations;
 @property (nonatomic, strong, readonly) NSArray *tAnimations;

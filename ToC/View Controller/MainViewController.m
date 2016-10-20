@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
 #import <SDCycleScrollView.h>
+#import <POP.h>
 
 // View Controller
 #import "AnimationListViewController.h"
@@ -24,21 +25,30 @@
 
 // Model
 #import "FaceManager.h"
+#import "APIClient+Vote.h"
 
 @interface MainViewController ()
 <
     SDCycleScrollViewDelegate
 >
 
+@property (nonatomic, assign) NSUInteger clintonCount;
+@property (nonatomic, assign) NSUInteger trumpCount;
+
+
 @property (nonatomic, weak) UIView *containerView;
 @property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, weak) UILabel *currentStateLabel;
+@property (nonatomic, weak) UILabel *countLabel;
+@property (nonatomic, weak) UILabel *percentageLabel;
 @property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, weak) UILabel *totalCountLabel;
 
 @property (nonatomic, weak) UIView *buttonView;
 @property (nonatomic, weak) UIButton *clintonButton;
 @property (nonatomic, weak) UIButton *trumpButton;
+
+@property (nonatomic, weak) UILabel *trumpPlusLabel;
+@property (nonatomic, weak) UILabel *clintonPlusLabel;
 
 @property (nonatomic, weak) SDCycleScrollView *cycleScrollView;
 @end
@@ -53,6 +63,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self constructView];
+    [self bindData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,11 +71,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    @weakify(self);
+    [[[APIClient sharedClient] getCurrentVoteCount]
+     subscribeNext:^(RACTuple *tuple) {
+         @strongify(self);
+         NSDictionary *dict = tuple.first;
+         [self updateCurrentStateWith:dict[@"voteInfo"]];
+    }];
+}
+
 #pragma mark - Setup UI
 
 - (void)constructView
 {
-    self.title = @"T or C";
+    self.title = @"Vote Wtih Pet";
     
     UIColor *tintColor = [UIColor blackColor];
     
@@ -140,6 +165,23 @@
     }];
     
     self.clintonButton = clintonButton;
+    
+    UILabel *plusLabel = [UILabel new];
+    plusLabel.text = @"+1";
+    plusLabel.textColor = [UIColor colorWithRed:28.0f/255.0f green:155.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+    plusLabel.hidden = YES;
+    plusLabel.textAlignment = NSTextAlignmentCenter;
+    plusLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    [self.view addSubview:plusLabel];
+    
+    [plusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(clintonButton);
+        make.bottom.equalTo(self.buttonView.mas_top).with.offset(-5);
+        make.centerX.equalTo(clintonButton);
+    }];
+    
+    self.clintonPlusLabel = plusLabel;
+    
 }
 
 - (void)setupTrumpButton
@@ -164,7 +206,25 @@
         make.left.equalTo(self.clintonButton.mas_right);
     }];
     
-    self.clintonButton = trumpButton;
+    self.trumpButton = trumpButton;
+    
+    UILabel *plusLabel = [UILabel new];
+    plusLabel.text = @"+1";
+    plusLabel.textColor = [UIColor colorWithRed:236.0f/255.0f green:12.0f/255.0f blue:72.0f/255.0f alpha:1.0f];
+    plusLabel.hidden = YES;
+    plusLabel.textAlignment = NSTextAlignmentCenter;
+    plusLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    [self.view addSubview:plusLabel];
+    
+    [plusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(trumpButton);
+        make.bottom.equalTo(self.buttonView.mas_top).with.offset(-5);
+        make.centerX.equalTo(trumpButton);
+    }];
+    
+    self.trumpPlusLabel = plusLabel;
+
+    
 }
 
 - (NSAttributedString *)titleWithName:(NSString *)name
@@ -210,7 +270,8 @@
     
     [self setupTopLine];
     [self setupImageView];
-    [self setupCurrentStateLabel];
+    [self setupPercentageLabel];
+    [self setupCountLabel];
     [self setupNameLabel];
     [self setupTotalCountLabel];
 }
@@ -248,22 +309,70 @@
     self.imageView = imageView;
 }
 
-- (void)setupCurrentStateLabel
+- (void)setupPercentageLabel
 {
     UILabel *label = [UILabel new];
         label.textColor = [TextStyles currentStateTitleColor];
-    label.text = @"52％：48％";
-    label.font = [UIFont fontWithName:@"Palatino-Bold"
-                                 size:26];
+    label.textColor = [TextStyles currentStateTitleColor];
+    label.font = [UIFont fontWithName:@"Palatino"
+                                 size:20.0f];
+    label.text = [self percentageStringWithClintonCount:0
+                                             TrumpCount:0];
+    
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentCenter;
     
     [self.containerView addSubview:label];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.imageView);
-        make.bottom.equalTo(self.imageView.mas_top);
+        make.top.equalTo(self.imageView);
     }];
     
-    self.currentStateLabel = label;
+    self.percentageLabel = label;
+}
+
+- (NSString *)percentageStringWithClintonCount:(NSUInteger)clintonCount
+                                    TrumpCount:(NSUInteger)trumpCount
+{
+    CGFloat totalCount = clintonCount + trumpCount;
+    
+    NSString *percentString = [NSString stringWithFormat:@"%3.0f%%  :  %3.0f%%",
+                               totalCount > 0 ? clintonCount / totalCount * 100 : 0,
+                               totalCount > 0 ? trumpCount / totalCount * 100 : 0];
+    
+    return percentString;
+}
+
+- (void)setupCountLabel
+{
+    UILabel *label = [UILabel new];
+    label.textColor = [TextStyles currentStateTitleColor];
+    label.font = [UIFont fontWithName:@"Palatino"
+                                 size:30.0f];
+    label.text = [self countStringWithClintonCount:0
+                                        TrumpCount:0];
+    
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    [self.containerView addSubview:label];
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.imageView);
+        make.bottom.equalTo(self.percentageLabel.mas_top).with.offset(-5);
+    }];
+    
+    self.countLabel = label;
+}
+
+- (NSString *)countStringWithClintonCount:(NSUInteger)clintonCount
+                               TrumpCount:(NSUInteger)trumpCount
+{
+    NSString *countString = [NSString stringWithFormat:@"%ld  :  %ld\n",
+                             clintonCount, trumpCount];
+    
+    return countString;
 }
 
 - (void)setupNameLabel
@@ -273,7 +382,7 @@
     label.textColor = [TextStyles currentStateTitleColor];
     label.text = @"Clinton v.s.Trump";
     label.font = [UIFont fontWithName:@"SnellRoundhand"
-                                 size:18];
+                                 size:24];
     
     [self.containerView addSubview:label];
     
@@ -298,7 +407,7 @@
     UILabel *label = [UILabel new];
     
     label.textColor = [TextStyles currentStateTitleColor];
-    label.attributedText = [self titleWithCount:250000];
+    label.attributedText = [self titleWithCount:0];
     label.numberOfLines = 0;
     
     [view addSubview:label];
@@ -310,14 +419,14 @@
     self.totalCountLabel = label;
 }
 
-- (NSAttributedString *)titleWithCount:(NSUInteger)count
+- (NSAttributedString *)titleWithCount:(CGFloat)count
 {
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setAlignment:NSTextAlignmentCenter];
     [style setLineBreakMode:NSLineBreakByWordWrapping];
     
-    UIFont *font1 = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:18.0f];
-    UIFont *font2 = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT"  size:12.0f];
+    UIFont *font1 = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:24.0f];
+    UIFont *font2 = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT"  size:16.0f];
     
     UIColor *color1 = [TextStyles clintonTintColor];
     UIColor *color2 = [UIColor blackColor];
@@ -329,7 +438,7 @@
                             NSParagraphStyleAttributeName:style,
                             NSForegroundColorAttributeName : color2};
     
-    NSString *countString = [NSString stringWithFormat:@"%ld%@", count > 1000 ? count/1000 : count,
+    NSString *countString = [NSString stringWithFormat:@"%.0f%@", count > 1000 ? count/1000 : count,
                                                                  count > 1000 ? @"k" : @""];
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] init];
     [attString appendAttributedString:[[NSAttributedString alloc] initWithString:countString
@@ -340,16 +449,61 @@
     return attString;
 }
 
+#pragma mark - Binding
+- (void)bindData
+{
+    RACSignal *clintonSignal = [[RACObserve(self, clintonCount) ignore:nil] distinctUntilChanged];
+
+    RACSignal *trumpSignal = [[RACObserve(self, trumpCount) ignore:nil] distinctUntilChanged];
+    
+    @weakify(self);
+    [[RACSignal combineLatest:@[clintonSignal, trumpSignal]]
+     subscribeNext:^(RACTuple *tuple) {
+         @strongify(self);
+         NSUInteger clintonCount = [tuple.first unsignedIntegerValue];
+         NSUInteger trumpCount = [tuple.second unsignedIntegerValue];
+         CGFloat totalCount = clintonCount + trumpCount;
+         
+         if (totalCount > 0) {
+             self.countLabel.text = [self countStringWithClintonCount:clintonCount
+                                                           TrumpCount:trumpCount];
+             self.percentageLabel.text = [self percentageStringWithClintonCount:clintonCount
+                                                                     TrumpCount:trumpCount];
+             self.totalCountLabel.attributedText = [self titleWithCount:totalCount];
+         }
+    }];
+}
+
 #pragma mark - Button Action
+
+- (void)updateCurrentStateWith:(NSDictionary *)dict
+{
+    if ([dict isKindOfClass:[NSDictionary class]]) {
+        self.clintonCount = [dict[@"C"] unsignedIntegerValue];
+        self.trumpCount = [dict[@"T"] unsignedIntegerValue];
+    }
+}
 
 - (void)navigateWithType:(id)sender
 {
     UIButton *button = (UIButton *) sender;
-    AnimationListViewController *vc = [AnimationListViewController new];
-    vc.type = button.tag;
     
-    [self.navigationController pushViewController:vc
-                                         animated:YES];
+    NSString *name = (button.tag == 0) ? @"C" : @"T";
+    
+    @weakify(self);
+    [[[APIClient sharedClient] voteFor:name]
+     subscribeNext:^(RACTuple *tuple) {
+         @strongify(self);
+         NSDictionary *dict = tuple.first;
+         [self updateCurrentStateWith:dict[@"voteInfo"]];
+         
+         if ([name isEqualToString:@"C"]) {
+             [self showClintonPlusAnimation];
+         } else {
+             [self showTrumpPlusAnimation];
+         }
+
+     }];
 }
 
 
@@ -365,6 +519,72 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://taps.io/Bboowji2"]];
+}
+
+- (void)showTrumpPlusAnimation
+{
+    if (self.trumpPlusLabel.hidden == NO) {
+        return;
+    }
+    self.trumpPlusLabel.hidden = NO;
+    
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.beginTime = CACurrentMediaTime();
+    anim.fromValue = @(0.0);
+    anim.toValue = @(1.0);
+    [self.trumpPlusLabel pop_addAnimation:anim forKey:@"fadein"];
+
+    POPBasicAnimation *anim2 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim2.beginTime = CACurrentMediaTime() + 1.0f;
+    anim2.fromValue = @(1.0);
+    anim2.toValue = @(0.0);
+    
+    @weakify(self);
+    anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        @strongify(self);
+        self.trumpPlusLabel.hidden = YES;
+        AnimationListViewController *vc = [AnimationListViewController new];
+        vc.type = AnimationTypeTrump;
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    };
+
+    [self.trumpPlusLabel pop_addAnimation:anim2 forKey:@"fadeout"];
+    
+    
+}
+
+- (void)showClintonPlusAnimation
+{
+    if (self.clintonPlusLabel.hidden == NO) {
+        return;
+    }
+    self.clintonPlusLabel.hidden = NO;
+    
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.beginTime = CACurrentMediaTime();
+    anim.fromValue = @(0.0);
+    anim.toValue = @(1.0);
+    [self.clintonPlusLabel pop_addAnimation:anim forKey:@"fadein"];
+    
+    POPBasicAnimation *anim2 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim2.beginTime = CACurrentMediaTime() + 1.0f;
+    anim2.fromValue = @(1.0);
+    anim2.toValue = @(0.0);
+    
+    @weakify(self);
+    anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        @strongify(self);
+        self.clintonPlusLabel.hidden = YES;
+        AnimationListViewController *vc = [AnimationListViewController new];
+        vc.type = AnimationTypeClinton;
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    };
+    
+    [self.clintonPlusLabel pop_addAnimation:anim2 forKey:@"fadeout"];
 }
 
 

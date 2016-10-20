@@ -8,7 +8,13 @@
 
 #import "AnimationManager.h"
 
-#import <BlocksKit/BlocksKit.h>
+#import <ReactiveCoreData.h>
+#import <BlocksKit.h>
+#import "NSManagedObject+RemoveAll.h"
+
+#import "APIClient+GifAnimation.h"
+#import "Mapper.h"
+#import "GifAnimation+Mapper.h"
 
 #import "Animation.h"
 
@@ -38,26 +44,77 @@
     self = [super init];
     
     if (self) {
-        self.cAnimations = [self createCAnimations];
-        self.tAnimations = [self createTAnimations];
-        self.bothAnimations = [self createBothAnimations];
+        [self initializeSignals];
     }
     
     return self;
 }
 
-- (NSArray *)createCAnimations
+- (void)initializeSignals
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"CAnimation"
-                                                     ofType:@"plist"];
-    NSArray *array = [NSArray arrayWithContentsOfFile:path];
+    RACSubject *trigger = self.reloadTrigger;
     
-    return [[array bk_select:^BOOL(id obj) {
-        return [obj isKindOfClass:[NSDictionary class]];
-    }] bk_map:^id(NSDictionary *dict) {
-        return [[Animation alloc] initWithData:dict];
-    }];
+    RAC(self, cAnimations) = [[[[[GifAnimation findAll]
+                           where:@"type == %@ OR type == %@"
+                           args:@[@"C", @"B"]]
+                          sortBy:@"uniqueId"]
+                         fetchWithTrigger:trigger]
+                              map:^id(NSArray *x)
+                        {
+                            return x;
+                        }];
+    
+    RAC(self, tAnimations) = [[[[[GifAnimation findAll]
+                                 where:@"type == %@ OR type == %@"
+                                 args:@[@"T", @"B"]]
+                                sortBy:@"uniqueId"]
+                               fetchWithTrigger:trigger]
+                              map:^id(NSArray *x)
+                              {
+                                  return x;
+                              }];
 }
+
+#pragma mark - Implement
+- (RACSignal *)queryAPI
+{
+    return [[APIClient sharedClient] getListWithType:@""];
+}
+
+- (NSArray *)preprocessData:(id)origin
+{
+    return origin;
+}
+
+- (RACSignal *)fetchOldItems
+{
+    return [[GifAnimation findAll]
+            fetch];
+}
+
+- (RACSignal *)mappingDataArray:(NSArray *)array
+{
+    return [Mapper loadDataArray:array
+                         toStore:[GifAnimation class]
+                              by:^RACSignal *(id obj, NSDictionary *data)
+            {
+                return [GifAnimation updateObject:obj withData:data];
+            }];
+}
+
+
+//- (NSArray *)createCAnimations
+//{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"CAnimation"
+//                                                     ofType:@"plist"];
+//    NSArray *array = [NSArray arrayWithContentsOfFile:path];
+//    
+//    return [[array bk_select:^BOOL(id obj) {
+//        return [obj isKindOfClass:[NSDictionary class]];
+//    }] bk_map:^id(NSDictionary *dict) {
+//        return [[Animation alloc] initWithData:dict];
+//    }];
+//}
 
 //- (NSArray *)createCAnimations
 //{
@@ -83,71 +140,31 @@
 //    return animations;
 //}
 
-- (NSArray *)createTAnimations
-{
-//    NSMutableArray *animations = [NSMutableArray array];
+//- (NSArray *)createTAnimations
+//{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"TAnimation"
+//                                                     ofType:@"plist"];
+//    NSArray *array = [NSArray arrayWithContentsOfFile:path];
 //    
-//    BOOL hasMore = YES;
-//    NSInteger index = 1;
+//    return [[array bk_select:^BOOL(id obj) {
+//        return [obj isKindOfClass:[NSDictionary class]];
+//    }] bk_map:^id(NSDictionary *dict) {
+//        return [[Animation alloc] initWithData:dict];
+//    }];
+//}
+
+//- (NSArray *)createBothAnimations
+//{
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"BothAnimation"
+//                                                     ofType:@"plist"];
+//    NSArray *array = [NSArray arrayWithContentsOfFile:path];
 //    
-//    while (hasMore) {
-//        NSString *fileName = [NSString stringWithFormat:@"proT_%ld",(long)index];
-//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName
-//                                                 withExtension:@"gif"];
+//    return [[array bk_select:^BOOL(id obj) {
+//        return [obj isKindOfClass:[NSDictionary class]];
+//    }] bk_map:^id(NSDictionary *dict) {
+//        return [[Animation alloc] initWithData:dict];
+//    }];
 //
-//        if (fileURL) {
-//            Animation *animation = [[Animation alloc] initWithImageURL:fileURL];
-//            [animations addObject:animation];
-//            index ++;
-//        } else {
-//            hasMore = NO;
-//        }
-//    }
-//    
-//    return animations;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"TAnimation"
-                                                     ofType:@"plist"];
-    NSArray *array = [NSArray arrayWithContentsOfFile:path];
-    
-    return [[array bk_select:^BOOL(id obj) {
-        return [obj isKindOfClass:[NSDictionary class]];
-    }] bk_map:^id(NSDictionary *dict) {
-        return [[Animation alloc] initWithData:dict];
-    }];
-}
-
-- (NSArray *)createBothAnimations
-{
-//    NSMutableArray *animations = [NSMutableArray array];
-//    
-//    BOOL hasMore = YES;
-//    NSInteger index = 1;
-//    
-//    while (hasMore) {
-//        NSString *fileName = [NSString stringWithFormat:@"Both_%ld",(long)index];
-//        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName
-//                                                 withExtension:@"gif"];
-//        
-//        if (fileURL) {
-//            Animation *animation = [[Animation alloc] initWithImageURL:fileURL];
-//            [animations addObject:animation];
-//            index ++;
-//        } else {
-//            hasMore = NO;
-//        }
-//    }
-//    
-//    return animations;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"BothAnimation"
-                                                     ofType:@"plist"];
-    NSArray *array = [NSArray arrayWithContentsOfFile:path];
-    
-    return [[array bk_select:^BOOL(id obj) {
-        return [obj isKindOfClass:[NSDictionary class]];
-    }] bk_map:^id(NSDictionary *dict) {
-        return [[Animation alloc] initWithData:dict];
-    }];
-
-}
+//}
 
 @end

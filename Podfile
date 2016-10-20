@@ -6,6 +6,16 @@
 # Utils
 pod 'ReactiveCocoa', '~> 2.4.4'
 pod 'BlocksKit', '~> 2.2.5'
+pod 'pop', '~> 1.0'
+
+# Data
+pod 'ReactiveCoreData', '~> 0.0.2'
+
+# Networking
+pod 'AFNetworking', '~> 2.5'
+pod 'AFNetworking-RACExtensions', :git => 'https://github.com/yitingLin/AFNetworking-RACExtensions'
+
+pod 'JRSwizzle', '~> 1.0'
 
 # UI
 pod 'YYKit', '~> 1.0.7'
