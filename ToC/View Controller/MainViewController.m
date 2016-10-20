@@ -12,6 +12,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/Masonry.h>
 #import <SDCycleScrollView.h>
+#import <POP.h>
 
 // View Controller
 #import "AnimationListViewController.h"
@@ -39,6 +40,9 @@
 @property (nonatomic, weak) UIView *buttonView;
 @property (nonatomic, weak) UIButton *clintonButton;
 @property (nonatomic, weak) UIButton *trumpButton;
+
+@property (nonatomic, weak) UILabel *trumpPlusLabel;
+@property (nonatomic, weak) UILabel *clintonPlusLabel;
 
 @property (nonatomic, weak) SDCycleScrollView *cycleScrollView;
 @end
@@ -129,7 +133,7 @@
     
     
     [clintonButton addTarget:self
-                      action:@selector(navigateWithType:)
+                      action:@selector(showClintonPlusAnimation)
             forControlEvents:UIControlEventTouchUpInside];
     
     [self.buttonView addSubview:clintonButton];
@@ -140,6 +144,23 @@
     }];
     
     self.clintonButton = clintonButton;
+    
+    UILabel *plusLabel = [UILabel new];
+    plusLabel.text = @"+1";
+    plusLabel.textColor = [UIColor colorWithRed:28.0f/255.0f green:155.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+    plusLabel.hidden = YES;
+    plusLabel.textAlignment = NSTextAlignmentCenter;
+    plusLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    [self.view addSubview:plusLabel];
+    
+    [plusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(clintonButton);
+        make.bottom.equalTo(self.buttonView.mas_top).with.offset(-5);
+        make.centerX.equalTo(clintonButton);
+    }];
+    
+    self.clintonPlusLabel = plusLabel;
+    
 }
 
 - (void)setupTrumpButton
@@ -152,7 +173,7 @@
     [trumpButton setBackgroundColor:[TextStyles trumpTintColor]];
     
     [trumpButton addTarget:self
-                      action:@selector(navigateWithType:)
+                      action:@selector(showTrumpPlusAnimation)
             forControlEvents:UIControlEventTouchUpInside];
 
     
@@ -164,7 +185,25 @@
         make.left.equalTo(self.clintonButton.mas_right);
     }];
     
-    self.clintonButton = trumpButton;
+    self.trumpButton = trumpButton;
+    
+    UILabel *plusLabel = [UILabel new];
+    plusLabel.text = @"+1";
+    plusLabel.textColor = [UIColor colorWithRed:236.0f/255.0f green:12.0f/255.0f blue:72.0f/255.0f alpha:1.0f];
+    plusLabel.hidden = YES;
+    plusLabel.textAlignment = NSTextAlignmentCenter;
+    plusLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    [self.view addSubview:plusLabel];
+    
+    [plusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(trumpButton);
+        make.bottom.equalTo(self.buttonView.mas_top).with.offset(-5);
+        make.centerX.equalTo(trumpButton);
+    }];
+    
+    self.trumpPlusLabel = plusLabel;
+
+    
 }
 
 - (NSAttributedString *)titleWithName:(NSString *)name
@@ -365,6 +404,72 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://taps.io/Bboowji2"]];
+}
+
+- (void)showTrumpPlusAnimation
+{
+    if (self.trumpPlusLabel.hidden == NO) {
+        return;
+    }
+    self.trumpPlusLabel.hidden = NO;
+    
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.beginTime = CACurrentMediaTime();
+    anim.fromValue = @(0.0);
+    anim.toValue = @(1.0);
+    [self.trumpPlusLabel pop_addAnimation:anim forKey:@"fadein"];
+
+    POPBasicAnimation *anim2 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim2.beginTime = CACurrentMediaTime() + 1.0f;
+    anim2.fromValue = @(1.0);
+    anim2.toValue = @(0.0);
+    
+    @weakify(self);
+    anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        @strongify(self);
+        self.trumpPlusLabel.hidden = YES;
+        AnimationListViewController *vc = [AnimationListViewController new];
+        vc.type = AnimationTypeTrump;
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    };
+
+    [self.trumpPlusLabel pop_addAnimation:anim2 forKey:@"fadeout"];
+    
+    
+}
+
+- (void)showClintonPlusAnimation
+{
+    if (self.clintonPlusLabel.hidden == NO) {
+        return;
+    }
+    self.clintonPlusLabel.hidden = NO;
+    
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.beginTime = CACurrentMediaTime();
+    anim.fromValue = @(0.0);
+    anim.toValue = @(1.0);
+    [self.clintonPlusLabel pop_addAnimation:anim forKey:@"fadein"];
+    
+    POPBasicAnimation *anim2 = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim2.beginTime = CACurrentMediaTime() + 1.0f;
+    anim2.fromValue = @(1.0);
+    anim2.toValue = @(0.0);
+    
+    @weakify(self);
+    anim2.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        @strongify(self);
+        self.clintonPlusLabel.hidden = YES;
+        AnimationListViewController *vc = [AnimationListViewController new];
+        vc.type = AnimationTypeClinton;
+        
+        [self.navigationController pushViewController:vc
+                                             animated:YES];
+    };
+    
+    [self.clintonPlusLabel pop_addAnimation:anim2 forKey:@"fadeout"];
 }
 
 

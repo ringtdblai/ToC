@@ -47,6 +47,7 @@
 		F854ADA91DB874A100054E53 /* Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADA81DB874A100054E53 /* Mapper.m */; };
 		F854ADAC1DB8751F00054E53 /* GifAnimation+Mapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADAB1DB8751F00054E53 /* GifAnimation+Mapper.m */; };
 		F854ADB51DB8844C00054E53 /* SDImageCache+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */; };
+		F854ADBD1DB8D9E200054E53 /* APIClient+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = F854ADBC1DB8D9E200054E53 /* APIClient+Email.m */; };
 		F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */; };
 		F888005F1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F888005E1DAF740E00DDD8DB /* AddFaceCollectionViewCell.m */; };
 		F88800631DAF78EC00DDD8DB /* WBMaskedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F88800621DAF78EC00DDD8DB /* WBMaskedImageView.m */; };
@@ -159,6 +160,8 @@
 		F854ADAB1DB8751F00054E53 /* GifAnimation+Mapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GifAnimation+Mapper.m"; sourceTree = "<group>"; };
 		F854ADB31DB8844C00054E53 /* SDImageCache+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDImageCache+Swizzle.m"; sourceTree = "<group>"; };
 		F854ADB41DB8844C00054E53 /* SDWebImage+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImage+Swizzle.h"; sourceTree = "<group>"; };
+		F854ADBB1DB8D9E200054E53 /* APIClient+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APIClient+Email.h"; sourceTree = "<group>"; };
+		F854ADBC1DB8D9E200054E53 /* APIClient+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "APIClient+Email.m"; sourceTree = "<group>"; };
 		F88800591DAF6E9A00DDD8DB /* AddFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceViewController.h; sourceTree = "<group>"; };
 		F888005A1DAF6E9A00DDD8DB /* AddFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceViewController.m; sourceTree = "<group>"; };
 		F888005D1DAF740E00DDD8DB /* AddFaceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceCollectionViewCell.h; sourceTree = "<group>"; };
@@ -421,6 +424,8 @@
 				F854ADA61DB8746F00054E53 /* Mapper */,
 				F854AD941DB871DF00054E53 /* APIClient.h */,
 				F854AD951DB871DF00054E53 /* APIClient.m */,
+				F854ADBB1DB8D9E200054E53 /* APIClient+Email.h */,
+				F854ADBC1DB8D9E200054E53 /* APIClient+Email.m */,
 				F854AD9A1DB8728000054E53 /* APIClient+GifAnimation.h */,
 				F854AD9B1DB8728000054E53 /* APIClient+GifAnimation.m */,
 			);
@@ -713,6 +718,7 @@
 				09D223821DB782A50072AEC6 /* UIImage+Color.m in Sources */,
 				F888005B1DAF6E9A00DDD8DB /* AddFaceViewController.m in Sources */,
 				0932FC751DAF47BE00F05D90 /* AnimationEditViewController.m in Sources */,
+				F854ADBD1DB8D9E200054E53 /* APIClient+Email.m in Sources */,
 				F854AD9C1DB8728000054E53 /* APIClient+GifAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

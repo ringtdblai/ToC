@@ -6,6 +6,7 @@
 # Utils
 pod 'ReactiveCocoa', '~> 2.4.4'
 pod 'BlocksKit', '~> 2.2.5'
+pod 'pop', '~> 1.0'
 
 # Data
 pod 'ReactiveCoreData', '~> 0.0.2'

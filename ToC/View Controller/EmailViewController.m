@@ -15,6 +15,8 @@
 #import "ViewDecorator.h"
 #import "RACCommand+Extension.h"
 
+#import "APIClient+Email.h"
+
 @interface EmailViewController ()
 <
     UITextFieldDelegate
@@ -197,7 +199,7 @@
      {
          [[NSUserDefaults standardUserDefaults] setObject:self.nameTextField.text forKey:@"email"];
          [[NSUserDefaults standardUserDefaults] synchronize];
-         return [RACSignal return:@1];
+         return [[APIClient sharedClient] signupWithEmail:self.nameTextField.text];
      }];
     
     [self.confirmCommand displayProgressHUDWhileExecutingInView:self.view];
