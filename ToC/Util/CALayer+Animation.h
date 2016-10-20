@@ -10,7 +10,7 @@
 #import "GifAnimation+CoreDataClass.h"
 
 #import "Animation.h"
-@interface CALayer (GifAnimation)
+@interface CALayer (Animation)
 
 + (instancetype)layerWithAnimation:(GifAnimation *)animation
                          scaleSize:(CGSize)scaleSize;
