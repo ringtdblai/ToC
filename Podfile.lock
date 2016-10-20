@@ -118,7 +118,7 @@ CHECKOUT OPTIONS:
     :commit: 557d9ebe48165fc31c7faa2951f02664ac34ea32
     :git: https://github.com/Mobiusbobs/Material-Controls-For-iOS
   TGCameraViewController:
-    :commit: f2b6122370f57619e7f11870bf8fe7069a106a37
+    :commit: 85588f921dad5c61b9ece66f37d1e556ac053990
     :git: https://github.com/Mobiusbobs/TGCameraViewController
 
 SPEC CHECKSUMS:

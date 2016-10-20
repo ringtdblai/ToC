@@ -228,7 +228,7 @@
         [self.collectionView reloadData];
     }];
     
-    RAC(self.faceImageView, image) = RACObserve([FaceManager sharedManager], maskedImage);
+    RAC(self.faceImageView, image) = [RACObserve([FaceManager sharedManager], maskedImage) ignore:nil];
 }
 
 #pragma mark - UICollectionView Delegate
