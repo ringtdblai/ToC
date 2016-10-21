@@ -30,6 +30,7 @@
 @property (nonatomic, weak) UILabel *descriptionLabel;
 @property (nonatomic, weak) UITextField *nameTextField;
 @property (nonatomic, weak) UIButton *getStartedButton;
+@property (nonatomic, weak) UIButton *skipButton;
 
 @property (nonatomic, strong) RACCommand *confirmCommand;
 
@@ -103,6 +104,8 @@
     // done button
     [self setupGetStartedButton];
     
+    // skip button
+    [self setupSkipButton];
 }
 
 - (void)setupImageIcon
@@ -195,6 +198,39 @@
     self.getStartedButton = getStartedButton;
 }
 
+- (void)setupSkipButton
+{
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    
+    [skipButton setTitle:NSLocalizedString(@"I don’t want to get the latest result", nil)
+                      forState:UIControlStateNormal];
+    [skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    skipButton.titleLabel.font = [UIFont systemFontOfSize:10];
+    
+    [self.view addSubview:skipButton];
+    [skipButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).with.offset(-10);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(self.view);
+        make.height.equalTo(@25);
+    }];
+    
+    skipButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"none" forKey:@"email"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return [RACSignal return:@1];
+    }];
+    @weakify(self);
+    [skipButton.rac_command subscribeAllNext:^{
+        @strongify(self);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    self.skipButton = skipButton;
+}
+
 #pragma mark - Binding
 
 - (void)bindConfirmCommand
@@ -210,8 +246,9 @@
     [self.confirmCommand displayProgressHUDWhileExecutingInView:self.view];
     
     [self.confirmCommand displayErrorInAlertViewWithTitle:NSLocalizedString(@"Error", nil)];
-    
+    @weakify(self);
     [self.confirmCommand subscribeAllNext:^{
+        @strongify(self);
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
