@@ -571,7 +571,7 @@
 				TargetAttributes = {
 					0932FB001DAE07F600F05D90 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4V2C8JW73Y;
+						DevelopmentTeam = 64ZLT48G98;
 						ProvisioningStyle = Manual;
 					};
 					0932FB1C1DAE07F600F05D90 = {
