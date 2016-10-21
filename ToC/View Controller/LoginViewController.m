@@ -48,7 +48,6 @@
     [self setupContainerView];
     [self setupIconImageView];
     [self setupTitleLabel];
-    [self setupFacebookLoginButton];
     [self setupRapidLoginButton];
     [self setupTermOfUse];
 }
@@ -87,9 +86,10 @@
 - (void)setupTitleLabel
 {
     UILabel *titleLabel = [UILabel new];
-    titleLabel.text = @"Please Login To Use";
+    titleLabel.text = @"Vote for the Presidential Election 2016 with pet’s GIFs and see the latest poll result in real time";
     titleLabel.textColor = [UIColor blackColor];
-    titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    titleLabel.font = [UIFont fontWithName:@"Palatino"
+                                      size:14.0f];
     
     
     titleLabel.numberOfLines = 0;
@@ -97,27 +97,13 @@
     [self.view addSubview:titleLabel];
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.iconImageView.mas_bottom).with.offset(9);
-        make.left.equalTo(self.containerView);
-        make.right.equalTo(self.containerView);
+        make.top.equalTo(self.iconImageView.mas_bottom).with.offset(30);
+        make.centerX.equalTo(self.containerView);
+        make.left.equalTo(self.view).with.offset(30);
+        make.right.equalTo(self.view).with.offset(-30);
     }];
     
     self.titleLabel = titleLabel;
-}
-
-- (void)setupFacebookLoginButton
-{
-    UIButton *fbLoginButton = [AnchorUIMaker createFacebookLoginButton];
-    
-    [self.containerView addSubview:fbLoginButton];
-    
-    [fbLoginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.containerView);
-        make.top.equalTo(self.titleLabel.mas_bottom).with.offset(31);
-        make.height.equalTo(@52);
-    }];
-    
-    self.fbLoginButton = fbLoginButton;
 }
 
 - (void)setupRapidLoginButton
@@ -127,9 +113,9 @@
     [self.containerView addSubview:rapidLoginButton];
     
     [rapidLoginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.fbLoginButton);
         make.left.right.equalTo(self.containerView);
-        make.top.equalTo(self.fbLoginButton.mas_bottom).with.offset(14);
+        make.top.equalTo(self.titleLabel.mas_bottom).with.offset(30);
+        make.height.equalTo(@52);
         make.bottom.equalTo(self.containerView);
     }];
     
@@ -161,30 +147,9 @@
 - (void)bindButtons
 {
     @weakify(self);
-    self.fbLoginButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        return [self loginByFacebookWithViewController:self];
-    }];
-    
-    [self.fbLoginButton.rac_command displayProgressHUDWhileExecutingInView:self.view];
-    
-    [self.fbLoginButton.rac_command
-     displayErrorInAlertViewWithTitle:NSLocalizedString(@"Login_Fail", nil)];
-    
-    [self.fbLoginButton.rac_command subscribeAllNext:^{
-        [[NSUserDefaults standardUserDefaults] setObject:@"facebook" forKey:@"email"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
     self.rapidLoginButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal return:@1];
     }];
-    
-    [self.rapidLoginButton.rac_command displayProgressHUDWhileExecutingInView:self.view];
-    
-    [self.rapidLoginButton.rac_command
-     displayErrorInAlertViewWithTitle:NSLocalizedString(@"Login_Fail", nil)];
     
     [self.rapidLoginButton.rac_command subscribeAllNext:^{
         @strongify(self);
@@ -192,68 +157,6 @@
     }];
     
 }
-
-- (RACSignal *)loginByFacebookWithViewController:(UIViewController *)viewController
-{
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        [login logInWithReadPermissions:@[@"public_profile",
-                                          @"email",
-                                          @"user_friends"]
-                     fromViewController:viewController
-                                handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
-         {
-             if (error) {
-                 [subscriber sendError:error];
-                 return;
-             }
-             
-             if (result.isCancelled) {
-                 NSError *error = [self errorForCode:FBSDKLoginManagerErrorCancel];
-                 [subscriber sendError:error];
-                 return;
-             }
-             
-             if (![result.grantedPermissions containsObject:@"email"] ||
-                 ![result.grantedPermissions containsObject:@"public_profile"] ||
-                 ![result.grantedPermissions containsObject:@"user_friends"])
-             {
-                 NSError *error = [self errorForCode:FBSDKLoginManagerErrorNeedPermission];
-                 [subscriber sendError:error];
-                 return;
-             }
-             [FBSDKAccessToken setCurrentAccessToken:result.token];
-             [subscriber sendNext:result];
-             [subscriber sendCompleted];
-         }];
-        
-        return nil;
-    }];
-
-    
-}
-
-- (NSError *)errorForCode:(FBSDKLoginManagerErrorCode)code
-{
-    NSString *discription;
-    
-    switch (code) {
-            case FBSDKLoginManagerErrorCancel:
-            discription = NSLocalizedString(@"Facebook_Login_Cancelled", nil);
-            break;
-            case FBSDKLoginManagerErrorNeedPermission:
-            discription = NSLocalizedString(@"Facebook_Login_Need_Permission", nil);
-            break;
-        default:
-            break;
-    }
-    
-    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : discription};
-    return  [NSError errorWithDomain:@"FBSDKLoginManager"
-                                code:code
-                            userInfo:userInfo];
-}
-
 
 - (void)goToEmailVC
 {

@@ -50,14 +50,9 @@
     
     [rapidLoginButton setBackgroundColor:defaultColor];
     
-    [rapidLoginButton setTitle:@"Rapid Login"
+    [rapidLoginButton setTitle:@"Next"
                    forState:UIControlStateNormal];
     
-    [rapidLoginButton setImage:[UIImage imageNamed:@"iconFastLogin"]
-                   forState:UIControlStateNormal];
-    rapidLoginButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
-    
-    rapidLoginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [rapidLoginButton setTitleColor:[UIColor colorWithWhite:0.216 alpha:1.000] forState:UIControlStateNormal];
     rapidLoginButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     
