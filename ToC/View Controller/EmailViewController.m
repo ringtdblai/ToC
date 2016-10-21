@@ -116,7 +116,7 @@
     
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView);
-        make.width.height.equalTo(self.contentView.mas_width);
+        make.width.height.equalTo(self.contentView.mas_width).dividedBy(1.2);
         make.centerX.equalTo(self.contentView);
     }];
     
