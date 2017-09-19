@@ -78,7 +78,9 @@
 #pragma mark - Implement
 - (RACSignal *)queryAPI
 {
-    return [[APIClient sharedClient] getListWithType:@""];
+    
+    return [RACSignal return:RACTuplePack([self getLocalAnimationData])];
+//    return [[APIClient sharedClient] getListWithType:@""];
 }
 
 - (NSArray *)preprocessData:(id)origin
@@ -102,6 +104,15 @@
             }];
 }
 
+
+- (NSArray *)getLocalAnimationData
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"CAnimation"
+                                                     ofType:@"plist"];
+    NSArray *array = [NSArray arrayWithContentsOfFile:path];
+    
+    return  array;
+}
 
 //- (NSArray *)createCAnimations
 //{

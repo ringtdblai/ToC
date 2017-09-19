@@ -518,20 +518,26 @@
     
     NSString *name = (button.tag == 0) ? @"C" : @"T";
     
-    @weakify(self);
-    [[[APIClient sharedClient] voteFor:name]
-     subscribeNext:^(RACTuple *tuple) {
-         @strongify(self);
-         NSDictionary *dict = tuple.first;
-         [self updateCurrentStateWith:dict[@"voteInfo"]];
-         
-         if ([name isEqualToString:@"C"]) {
-             [self showClintonPlusAnimation];
-         } else {
-             [self showTrumpPlusAnimation];
-         }
-
-     }];
+    if ([name isEqualToString:@"C"]) {
+        [self showClintonPlusAnimation];
+    } else {
+        [self showTrumpPlusAnimation];
+    }
+    
+//    @weakify(self);
+//    [[[APIClient sharedClient] voteFor:name]
+//     subscribeNext:^(RACTuple *tuple) {
+//         @strongify(self);
+//         NSDictionary *dict = tuple.first;
+//         [self updateCurrentStateWith:dict[@"voteInfo"]];
+//         
+//         if ([name isEqualToString:@"C"]) {
+//             [self showClintonPlusAnimation];
+//         } else {
+//             [self showTrumpPlusAnimation];
+//         }
+//
+//     }];
 }
 
 

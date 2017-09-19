@@ -3,84 +3,253 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>name</key>
-		<string>proC_2</string>
-		<key>animation</key>
-		<dict>
-			<key>bounds</key>
-			<array>
-				<string>{{0, 0}, {105, 130}}</string>
-				<string>{{0, 0}, {105, 137}}</string>
-				<string>{{0, 0}, {96, 140}}</string>
-				<string>{{0, 0}, {100, 135}}</string>
-				<string>{{0, 0}, {100, 130}}</string>
-			</array>
-			<key>position</key>
-			<array>
-				<string>{247, 145}</string>
-				<string>{248, 151}</string>
-				<string>{247, 149}</string>
-				<string>{247, 152}</string>
-				<string>{248, 158}</string>
-			</array>
-		</dict>
+		<key>_id</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/51.gif</string>
+		<key>dataType</key>
+		<string>C</string>
+		<key>imageURL</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/51.gif</string>
+		<key>duration</key>
+		<real>1.28</real>
+		<key>width</key>
+		<integer>413</integer>
+		<key>height</key>
+		<integer>413</integer>
+		<key>position</key>
+		<array>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+			<string>{206.5, 156.5}</string>
+		</array>
+		<key>bounds</key>
+		<array>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+			<string>{{0, 0}, {295, 295}}</string>
+		</array>
+		<key>rotation</key>
+		<array>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+		</array>
 	</dict>
 	<dict>
-		<key>name</key>
-		<string>proC_3</string>
-		<key>animation</key>
-		<dict>
-			<key>bounds</key>
-			<array>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-				<string>{{0, 0}, {44, 52}}</string>
-			</array>
-			<key>position</key>
-			<array>
-				<string>{373, 64}</string>
-				<string>{368, 64}</string>
-				<string>{371, 63}</string>
-				<string>{371, 61}</string>
-				<string>{368, 64}</string>
-				<string>{480, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-				<string>{600, 64}</string>
-			</array>
-		</dict>
+		<key>_id</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/58.gif</string>
+		<key>dataType</key>
+		<string>C</string>
+		<key>imageURL</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/58.gif</string>
+		<key>duration</key>
+		<real>0.6</real>
+		<key>width</key>
+		<integer>1200</integer>
+		<key>height</key>
+		<integer>1200</integer>
+		<key>position</key>
+		<array>
+			<string>{198, 601}</string>
+			<string>{198, 601}</string>
+			<string>{198, 601}</string>
+		</array>
+		<key>bounds</key>
+		<array>
+			<string>{{0, 0}, {692, 692}}</string>
+			<string>{{0, 0}, {692, 692}}</string>
+			<string>{{0, 0}, {692, 692}}</string>
+		</array>
+		<key>rotation</key>
+		<array>
+			<string>0</string>
+			<string>0</string>
+			<string>0</string>
+		</array>
+	</dict>
+	<dict>
+		<key>_id</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/53.gif</string>
+		<key>dataType</key>
+		<string>C</string>
+		<key>imageURL</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/53.gif</string>
+		<key>duration</key>
+		<real>1.54</real>
+		<key>width</key>
+		<integer>416</integer>
+		<key>height</key>
+		<integer>416</integer>
+		<key>position</key>
+		<array>
+			<string>{57, 156}</string>
+			<string>{66, 157}</string>
+			<string>{66, 158}</string>
+			<string>{66, 169}</string>
+			<string>{68, 172}</string>
+			<string>{69, 173}</string>
+			<string>{71, 172}</string>
+			<string>{71, 172}</string>
+			<string>{76, 172}</string>
+			<string>{73, 172}</string>
+			<string>{72, 171}</string>
+			<string>{65, 172}</string>
+			<string>{65, 172}</string>
+			<string>{63, 170}</string>
+			<string>{63, 170}</string>
+			<string>{63, 170}</string>
+			<string>{64, 170}</string>
+			<string>{67, 173}</string>
+			<string>{69, 173}</string>
+			<string>{71, 174}</string>
+			<string>{74, 174}</string>
+			<string>{75, 174}</string>
+			<string>{75, 174}</string>
+			<string>{75, 175}</string>
+		</array>
+		<key>bounds</key>
+		<array>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+			<string>{{0, 0}, {188, 188}}</string>
+		</array>
+		<key>rotation</key>
+		<array>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+			<string>-18</string>
+		</array>
+	</dict>
+	<dict>
+		<key>_id</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/42.gif</string>
+		<key>dataType</key>
+		<string>C</string>
+		<key>imageURL</key>
+		<string>https://s3-us-west-1.amazonaws.com/pamilyme/toc/gifs/C/42.gif</string>
+		<key>duration</key>
+		<real>1</real>
+		<key>width</key>
+		<integer>491</integer>
+		<key>height</key>
+		<integer>491</integer>
+		<key>position</key>
+		<array>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+			<string>{244, 335}</string>
+		</array>
+		<key>bounds</key>
+		<array>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+			<string>{{0, 0}, {278, 278}}</string>
+		</array>
+		<key>rotation</key>
+		<array>
+			<string>-18</string>
+			<string>-17</string>
+			<string>-16</string>
+			<string>-17</string>
+			<string>-18</string>
+			<string>-17</string>
+			<string>-16</string>
+			<string>-17</string>
+			<string>-18</string>
+			<string>-17</string>
+		</array>
 	</dict>
 </array>
 </plist>
